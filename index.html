@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aderet</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f7f1ed;
+    color:#5e4b52;
+    display:flex;
+    overflow-x:hidden;
+}
+
+/* MENU */
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:#ead5cf;
+    position:fixed;
+    left:0;
+    top:0;
+    padding:40px 25px;
+    overflow-y:auto;
+    box-shadow:5px 0px 20px rgba(0,0,0,0.05);
+}
+
+.logo-menu{
+    font-size:40px;
+    font-weight:bold;
+    color:#8a5d6b;
+    margin-bottom:50px;
+}
+
+.menu-item{
+    font-size:20px;
+    margin-bottom:20px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.menu-item:hover{
+    color:#8a5d6b;
+    transform:translateX(5px);
+}
+
+.submenu{
+    margin-left:15px;
+    margin-top:10px;
+    display:none;
+}
+
+.submenu div{
+    margin-bottom:12px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submenu div:hover{
+    color:#8a5d6b;
+    transform:translateX(5px);
+}
+
+/* CONTENIDO */
+
+.contenido{
+    margin-left:260px;
+    width:calc(100% - 260px);
+}
+
+.pagina{
+    min-height:100vh;
+    padding:60px;
+    display:none;
+    animation:fade 0.4s ease;
+}
+
+.activa{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+}
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0px);
+    }
+
+}
+
+/* INICIO */
+
+.logo{
+    width:260px;
+    height:260px;
+    border-radius:30px;
+    background:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:40px;
+    box-shadow:0px 5px 20px rgba(0,0,0,0.08);
+    font-size:25px;
+    color:#999;
+}
+
+#inicio h2{
+    font-size:65px;
+    color:#8a5d6b;
+    margin-bottom:20px;
+}
+
+#inicio p{
+    font-size:22px;
+    max-width:700px;
+    line-height:35px;
+}
+
+/* PRODUCTOS */
+
+.titulo{
+    font-size:50px;
+    color:#8a5d6b;
+    margin-bottom:40px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:25px;
+}
+
+.producto{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0px 5px 15px rgba(0,0,0,0.08);
+}
+
+.producto:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0px 10px 25px rgba(0,0,0,0.12);
+}
+
+.producto img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.info{
+    padding:20px;
+}
+
+.info h3{
+    margin-bottom:10px;
+    color:#8a5d6b;
+}
+
+/* PRODUCTO */
+
+.producto-container{
+    display:flex;
+    gap:50px;
+}
+
+.galeria{
+    width:50%;
+}
+
+.imagen-principal{
+    width:100%;
+    height:650px;
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    position:relative;
+}
+
+.imagen-principal img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.3s;
+}
+
+.imagen-principal img:hover{
+    transform:scale(1.08);
+}
+
+.miniaturas{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
+
+.miniaturas img{
+    width:90px;
+    height:90px;
+    border-radius:15px;
+    object-fit:cover;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.miniaturas img:hover{
+    transform:scale(1.05);
+}
+
+.producto-info{
+    width:50%;
+}
+
+.producto-info h1{
+    font-size:45px;
+    color:#8a5d6b;
+    margin-bottom:20px;
+}
+
+.precio{
+    font-size:35px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.descripcion{
+    line-height:32px;
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.subtitulo{
+    font-size:24px;
+    color:#8a5d6b;
+    margin-top:30px;
+    margin-bottom:15px;
+}
+
+.colores{
+    display:flex;
+    gap:15px;
+}
+
+.color{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:2px solid #ccc;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.color:hover{
+    transform:scale(1.15);
+}
+
+.btn{
+    display:inline-block;
+    margin-top:35px;
+    background:#8a5d6b;
+    color:white;
+    padding:18px 40px;
+    border-radius:15px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* CONTACTO */
+
+#contacto{
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+#contacto h2{
+    font-size:55px;
+    margin-bottom:20px;
+    color:#8a5d6b;
+}
+
+#contacto p{
+    font-size:22px;
+    margin-top:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- MENU -->
+
+<div class="sidebar">
+
+<div class="logo-menu">
+Aderet
+</div>
+
+<div class="menu-item"
+onclick="mostrarPagina('inicio')">
+Inicio
+</div>
+
+<div class="menu-item"
+onclick="toggleProductos()">
+Productos
+</div>
+
+<div class="submenu"
+id="submenuProductos">
+
+<div onclick="mostrarPagina('sabanas')">
+Sábanas
+</div>
+
+<div onclick="mostrarPagina('mantas')">
+Mantas
+</div>
+
+<div onclick="mostrarPagina('peluches')">
+Peluches
+</div>
+
+<div onclick="mostrarPagina('acolchados')">
+Acolchados
+</div>
+
+</div>
+
+<div class="menu-item"
+onclick="mostrarPagina('contacto')">
+Contacto
+</div>
+
+</div>
+
+<!-- CONTENIDO -->
+
+<div class="contenido">
+
+<!-- INICIO -->
+
+<section class="pagina activa"
+id="inicio">
+
+<div class="logo">
+LOGO
+</div>
+
+<h2>
+Elegancia y confort
+</h2>
+
+<p>
+Blanquería online moderna y minimalista.
+Diseños delicados y calidad premium.
+</p>
+
+</section>
+
+<!-- GENERADOR DE CATEGORIAS -->
+
+<script>
+
+const categorias = [
+"sabanas",
+"mantas",
+"peluches",
+"acolchados"
+];
+
+document.write(categorias.map(categoria => `
+
+<section class="pagina" id="${categoria}">
+
+<h2 class="titulo">
+${categoria.charAt(0).toUpperCase() + categoria.slice(1)}
+</h2>
+
+<div class="grid">
+
+${Array.from({length:10}, (_,i)=>`
+
+<div class="producto"
+onclick="mostrarPagina('${categoria}${i+1}')">
+
+<img src="https://via.placeholder.com/400x500/${Math.floor(Math.random()*999999)}">
+
+<div class="info">
+
+<h3>
+Modelo ${i+1}
+</h3>
+
+<p>
+$${(35000 + i*2500).toLocaleString()}
+</p>
+
+</div>
+
+</div>
+
+`).join("")}
+
+</div>
+
+</section>
+
+${Array.from({length:10}, (_,i)=>`
+
+<section class="pagina"
+id="${categoria}${i+1}">
+
+<div class="producto-container">
+
+<div class="galeria">
+
+<div class="imagen-principal">
+
+<img id="img${categoria}${i+1}"
+src="https://via.placeholder.com/700x800/${Math.floor(Math.random()*999999)}">
+
+</div>
+
+<div class="miniaturas">
+
+<img src="https://via.placeholder.com/700x800/d9c2b0"
+onclick="cambiarImagen('img${categoria}${i+1}','https://via.placeholder.com/700x800/d9c2b0')">
+
+<img src="https://via.placeholder.com/700x800/cfcfcf"
+onclick="cambiarImagen('img${categoria}${i+1}','https://via.placeholder.com/700x800/cfcfcf')">
+
+<img src="https://via.placeholder.com/700x800/f0d8d8"
+onclick="cambiarImagen('img${categoria}${i+1}','https://via.placeholder.com/700x800/f0d8d8')">
+
+</div>
+
+</div>
+
+<div class="producto-info">
+
+<h1>
+${categoria} Modelo ${i+1}
+</h1>
+
+<div class="precio">
+$${(35000 + i*2500).toLocaleString()}
+</div>
+
+<div class="descripcion">
+
+Producto premium de Aderet.
+Diseño elegante, moderno y minimalista.
+Ideal para darle confort y estilo a tu hogar.
+
+</div>
+
+<div class="subtitulo">
+Colores
+</div>
+
+<div class="colores">
+
+<div class="color"
+style="background:#d9c2b0"
+onclick="cambiarImagen('img${categoria}${i+1}','https://via.placeholder.com/700x800/d9c2b0')">
+</div>
+
+<div class="color"
+style="background:#cfcfcf"
+onclick="cambiarImagen('img${categoria}${i+1}','https://via.placeholder.com/700x800/cfcfcf')">
+</div>
+
+<div class="color"
+style="background:#f0d8d8"
+onclick="cambiarImagen('img${categoria}${i+1}','https://via.placeholder.com/700x800/f0d8d8')">
+</div>
+
+</div>
+
+<div class="subtitulo">
+Métodos de pago
+</div>
+
+<p>
+• Efectivo<br>
+• Transferencia
+</p>
+
+<a class="btn"
+href="https://wa.me/1158203956?text=Hola,%20quiero%20reservar%20${categoria}%20Modelo%20${i+1}">
+
+Reservar
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+`).join("")}
+
+`).join(""));
+
+</script>
+
+<!-- CONTACTO -->
+
+<section class="pagina"
+id="contacto">
+
+<h2>
+Contacto
+</h2>
+
+<p>
+WhatsApp: 11 5820 3956
+</p>
+
+<p>
+Instagram: @Aderet.Blanqueria
+</p>
+
+</section>
+
+</div>
+
+<script>
+
+function mostrarPagina(id){
+
+const paginas =
+document.querySelectorAll(".pagina");
+
+paginas.forEach(function(pagina){
+
+pagina.style.display="none";
+
+});
+
+const paginaActiva =
+document.getElementById(id);
+
+if(id==="inicio" || id==="contacto"){
+
+paginaActiva.style.display="flex";
+
+}else{
+
+paginaActiva.style.display="block";
+
+}
+
+}
+
+function toggleProductos(){
+
+const submenu =
+document.getElementById(
+"submenuProductos"
+);
+
+if(submenu.style.display==="block"){
+
+submenu.style.display="none";
+
+}else{
+
+submenu.style.display="block";
+
+}
+
+}
+
+function cambiarImagen(id,imagen){
+
+document.getElementById(id).src =
+imagen;
+
+}
+
+</script>
+
+</body>
+</html>
