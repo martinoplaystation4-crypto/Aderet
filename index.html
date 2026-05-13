@@ -193,6 +193,7 @@ body{
     width:100%;
     height:250px;
     object-fit:cover;
+    display:block;
 }
 
 .info{
@@ -205,7 +206,7 @@ body{
 }
 
 /* ========================= */
-/* PRODUCTO */
+/* PRODUCTO INDIVIDUAL */
 /* ========================= */
 
 .producto-container{
@@ -383,42 +384,46 @@ body{
     .grid{
 
         grid-template-columns:repeat(2,1fr);
-        gap:10px;
+        gap:12px;
+        padding:0px 5px;
 
     }
 
     .producto{
 
         width:100%;
-        max-width:195px;
+        max-width:100%;
         margin:auto;
-        border-radius:16px;
+        border-radius:18px;
+        overflow:hidden;
 
     }
 
     .producto img{
 
-        height:235px;
+        width:100%;
+        height:170px;
         object-fit:cover;
+        display:block;
 
     }
 
     .info{
 
-        padding:12px;
+        padding:14px;
 
     }
 
     .info h3{
 
-        font-size:15px;
-        margin-bottom:6px;
+        font-size:16px;
+        margin-bottom:5px;
 
     }
 
     .info p{
 
-        font-size:14px;
+        font-size:15px;
 
     }
 
@@ -544,7 +549,7 @@ ${Array.from({length:10}, (_,i)=>`
 <div class="producto"
 onclick="mostrarPagina('${categoria}${i+1}')">
 
-<img src="https://via.placeholder.com/400x500/${Math.floor(Math.random()*999999)}">
+<img src="https://via.placeholder.com/400x500/e7d9d2">
 
 <div class="info">
 
@@ -578,7 +583,7 @@ id="${categoria}${i+1}">
 <div class="imagen-principal">
 
 <img id="img${categoria}${i+1}"
-src="https://via.placeholder.com/700x800/${Math.floor(Math.random()*999999)}">
+src="https://via.placeholder.com/700x800/e7d9d2">
 
 </div>
 
