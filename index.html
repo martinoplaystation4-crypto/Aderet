@@ -378,9 +378,51 @@ body{
         width:100%;
     }
 
+    /* PRODUCTOS EN CELULAR */
+
     .grid{
+
         grid-template-columns:repeat(2,1fr);
+        gap:10px;
+
     }
+
+    .producto{
+
+        width:100%;
+        max-width:195px;
+        margin:auto;
+        border-radius:16px;
+
+    }
+
+    .producto img{
+
+        height:235px;
+        object-fit:cover;
+
+    }
+
+    .info{
+
+        padding:12px;
+
+    }
+
+    .info h3{
+
+        font-size:15px;
+        margin-bottom:6px;
+
+    }
+
+    .info p{
+
+        font-size:14px;
+
+    }
+
+    /* TODO LO DEMAS IGUAL */
 
     .producto-container{
         flex-direction:column;
@@ -407,16 +449,12 @@ body{
 
 <body>
 
-<!-- MENU MOBILE -->
-
 <div class="menu-mobile"
 onclick="toggleMenu()">
 
 ☰
 
 </div>
-
-<!-- SIDEBAR -->
 
 <div class="sidebar">
 
@@ -462,11 +500,7 @@ Contacto
 
 </div>
 
-<!-- CONTENIDO -->
-
 <div class="contenido">
-
-<!-- INICIO -->
 
 <section class="pagina activa"
 id="inicio">
@@ -485,8 +519,6 @@ Diseños delicados y calidad premium.
 </p>
 
 </section>
-
-<!-- CATEGORIAS Y PRODUCTOS -->
 
 <script>
 
@@ -634,8 +666,6 @@ Reservar
 
 </script>
 
-<!-- CONTACTO -->
-
 <section class="pagina"
 id="contacto">
 
@@ -728,4 +758,5 @@ sidebar.classList.toggle("activo");
 </script>
 
 </body>
+
 </html>
