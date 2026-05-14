@@ -27,7 +27,7 @@ body{
 }
 
 /* ========================= */
-/* MENU CELULAR */
+/* MENU MOBILE */
 /* ========================= */
 
 .menu-mobile{
@@ -59,7 +59,7 @@ body{
     position:fixed;
     left:0;
     top:0;
-    padding:120px 25px 40px;
+    padding:110px 25px 40px;
     overflow-y:auto;
     box-shadow:5px 0px 20px rgba(0,0,0,0.05);
     transition:0.4s;
@@ -90,6 +90,7 @@ body{
     margin-left:15px;
     margin-top:10px;
     display:none;
+    animation:fade 0.3s ease;
 }
 
 .submenu div{
@@ -265,6 +266,11 @@ body{
     border-radius:15px;
     object-fit:cover;
     cursor:pointer;
+    transition:0.3s;
+}
+
+.miniaturas img:hover{
+    transform:scale(1.08);
 }
 
 .producto-info{
@@ -307,6 +313,11 @@ body{
     border-radius:50%;
     border:2px solid #ccc;
     cursor:pointer;
+    transition:0.3s;
+}
+
+.color:hover{
+    transform:scale(1.15);
 }
 
 .btn{
@@ -680,8 +691,11 @@ Métodos de pago
 </p>
 
 <a class="btn"
-href="https://wa.me/5491158203956?text=Hola,%20quiero%20reservar%20${categoria}%20Modelo%20${i+1}">
+href="https://wa.me/5491158203956?text=Hola,%20quiero%20reservar%20${categoria}%20Modelo%20${i+1}"
+target="_blank">
+
 Reservar
+
 </a>
 
 </div>
