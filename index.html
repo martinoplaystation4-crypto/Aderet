@@ -59,6 +59,7 @@ body{
     font-weight:bold;
     color:#8a5d6b;
     margin-bottom:50px;
+    padding-top:70px;
 }
 
 .menu-item{
@@ -314,6 +315,7 @@ body{
     box-shadow:0px 5px 20px rgba(0,0,0,0.08);
     max-width:500px;
     width:100%;
+    margin:auto;
 }
 
 .contacto-box p{
@@ -337,8 +339,8 @@ body{
     .menu-mobile{
         display:flex;
         position:fixed;
-        top:20px;
-        left:20px;
+        top:15px;
+        left:15px;
         width:55px;
         height:55px;
         background:#8a5d6b;
@@ -391,6 +393,26 @@ body{
         font-size:42px;
     }
 
+    #contacto{
+        padding:120px 20px 40px;
+    }
+
+    #contacto .titulo{
+        font-size:55px;
+        margin-bottom:25px;
+    }
+
+    .contacto-box{
+        width:100%;
+        padding:25px;
+    }
+
+    .contacto-box p{
+        font-size:16px;
+        line-height:28px;
+        word-break:break-word;
+    }
+
 }
 
 </style>
@@ -399,14 +421,10 @@ body{
 
 <body>
 
-<!-- MENU MOBILE -->
-
 <div class="menu-mobile"
 onclick="toggleMenu()">
 ☰
 </div>
-
-<!-- SIDEBAR -->
 
 <div class="sidebar">
 
@@ -435,7 +453,7 @@ Sábanas
 Mantas
 </div>
 
-<div onclick="mostrarPagina('peluches con manta')">
+<div onclick="mostrarPagina('peluches')">
 Peluches con manta
 </div>
 
@@ -452,11 +470,7 @@ Contacto
 
 </div>
 
-<!-- CONTENIDO -->
-
 <div class="contenido">
-
-<!-- INICIO -->
 
 <section class="pagina activa"
 id="inicio">
@@ -476,8 +490,6 @@ Diseños delicados y calidad premium.
 
 </section>
 
-<!-- CONTACTO -->
-
 <section class="pagina"
 id="contacto">
 
@@ -490,10 +502,10 @@ Contacto
 <p>
 📱 WhatsApp<br>
 
-<a href="https://wa.me/1158203956?text="
+<a href="https://wa.me/5491158203956"
 target="_blank">
 
-11 5820 3956
++54 11 5820-3956
 
 </a>
 
@@ -516,8 +528,6 @@ target="_blank">
 </section>
 
 </div>
-
-<!-- JAVASCRIPT -->
 
 <script>
 
@@ -645,7 +655,7 @@ Métodos de pago
 </p>
 
 <a class="btn"
-href="https://wa.me/1158203956?text=Hola,%20quiero%20reservar%20${categoria}%20Modelo%20${i+1}">
+href="https://wa.me/5491158203956?text=Hola,%20quiero%20reservar%20${categoria}%20Modelo%20${i+1}">
 Reservar
 </a>
 
