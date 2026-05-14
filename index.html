@@ -10,10 +10,6 @@
 
 <style>
 
-/* ========================= */
-/* RESET */
-/* ========================= */
-
 *{
     margin:0;
     padding:0;
@@ -28,17 +24,13 @@ body{
     overflow-x:hidden;
 }
 
-/* ========================= */
 /* MENU MOBILE */
-/* ========================= */
 
 .menu-mobile{
     display:none;
 }
 
-/* ========================= */
 /* SIDEBAR */
-/* ========================= */
 
 .sidebar{
     width:260px;
@@ -91,9 +83,7 @@ body{
     transform:translateX(5px);
 }
 
-/* ========================= */
 /* CONTENIDO */
-/* ========================= */
 
 .contenido{
     margin-left:260px;
@@ -129,9 +119,7 @@ body{
 
 }
 
-/* ========================= */
 /* INICIO */
-/* ========================= */
 
 .logo{
     width:260px;
@@ -159,9 +147,7 @@ body{
     line-height:35px;
 }
 
-/* ========================= */
 /* PRODUCTOS */
-/* ========================= */
 
 .titulo{
     font-size:50px;
@@ -186,7 +172,6 @@ body{
 
 .producto:hover{
     transform:translateY(-8px) scale(1.02);
-    box-shadow:0px 10px 25px rgba(0,0,0,0.12);
 }
 
 .producto img{
@@ -205,9 +190,7 @@ body{
     color:#8a5d6b;
 }
 
-/* ========================= */
 /* PRODUCTO INDIVIDUAL */
-/* ========================= */
 
 .producto-container{
     display:flex;
@@ -249,11 +232,6 @@ body{
     border-radius:15px;
     object-fit:cover;
     cursor:pointer;
-    transition:0.3s;
-}
-
-.miniaturas img:hover{
-    transform:scale(1.05);
 }
 
 .producto-info{
@@ -296,11 +274,6 @@ body{
     border-radius:50%;
     border:2px solid #ccc;
     cursor:pointer;
-    transition:0.3s;
-}
-
-.color:hover{
-    transform:scale(1.15);
 }
 
 .btn{
@@ -312,42 +285,36 @@ body{
     border-radius:15px;
     text-decoration:none;
     font-weight:bold;
-    transition:0.3s;
 }
 
-.btn:hover{
-    transform:scale(1.05);
-}
-
-/* ========================= */
 /* CONTACTO */
-/* ========================= */
 
-#contacto{
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+.contacto-box{
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0px 5px 20px rgba(0,0,0,0.08);
+    max-width:500px;
+    width:100%;
 }
 
-#contacto h2{
-    font-size:55px;
-    margin-bottom:20px;
-    color:#8a5d6b;
-}
-
-#contacto p{
+.contacto-box p{
     font-size:22px;
-    margin-top:15px;
+    margin-bottom:25px;
+    line-height:35px;
 }
 
-/* ========================= */
+.contacto-box a{
+    color:#8a5d6b;
+    text-decoration:none;
+    font-weight:bold;
+}
+
 /* RESPONSIVE */
-/* ========================= */
 
 @media(max-width:900px){
 
     .menu-mobile{
-
         display:flex;
         position:fixed;
         top:20px;
@@ -362,8 +329,6 @@ body{
         font-size:30px;
         z-index:9999;
         cursor:pointer;
-        box-shadow:0px 5px 15px rgba(0,0,0,0.2);
-
     }
 
     .sidebar{
@@ -379,55 +344,27 @@ body{
         width:100%;
     }
 
-    /* PRODUCTOS EN CELULAR */
-
     .grid{
-
         grid-template-columns:repeat(2,1fr);
         gap:12px;
         padding:0px 5px;
-
     }
 
     .producto{
-
         width:100%;
         max-width:100%;
         margin:auto;
         border-radius:18px;
-        overflow:hidden;
-
     }
 
     .producto img{
-
         width:100%;
         height:170px;
-        object-fit:cover;
-        display:block;
-
     }
 
     .info{
-
         padding:14px;
-
     }
-
-    .info h3{
-
-        font-size:16px;
-        margin-bottom:5px;
-
-    }
-
-    .info p{
-
-        font-size:15px;
-
-    }
-
-    /* TODO LO DEMAS IGUAL */
 
     .producto-container{
         flex-direction:column;
@@ -456,9 +393,7 @@ body{
 
 <div class="menu-mobile"
 onclick="toggleMenu()">
-
 ☰
-
 </div>
 
 <div class="sidebar">
@@ -522,6 +457,41 @@ Elegancia y confort
 Blanquería online moderna y minimalista.
 Diseños delicados y calidad premium.
 </p>
+
+</section>
+
+<section class="pagina"
+id="contacto">
+
+<h2 class="titulo">
+Contacto
+</h2>
+
+<div class="contacto-box">
+
+<p>
+📱 WhatsApp<br>
+
+<a href="https://wa.me/1158203956"
+target="_blank">
+
+11 5820 3956
+
+</a>
+</p>
+
+<p>
+📸 Instagram<br>
+
+<a href="https://instagram.com/Aderet.Blanqueria"
+target="_blank">
+
+@Aderet.Blanqueria
+
+</a>
+</p>
+
+</div>
 
 </section>
 
@@ -613,11 +583,9 @@ $${(35000 + i*2500).toLocaleString()}
 </div>
 
 <div class="descripcion">
-
 Producto premium de Aderet.
 Diseño elegante, moderno y minimalista.
 Ideal para darle confort y estilo a tu hogar.
-
 </div>
 
 <div class="subtitulo">
@@ -654,9 +622,7 @@ Métodos de pago
 
 <a class="btn"
 href="https://wa.me/1158203956?text=Hola,%20quiero%20reservar%20${categoria}%20Modelo%20${i+1}">
-
 Reservar
-
 </a>
 
 </div>
@@ -667,30 +633,7 @@ Reservar
 
 `).join("")}
 
-`).join(""));
-
-</script>
-
-<section class="pagina"
-id="contacto">
-
-<h2>
-Contacto
-</h2>
-
-<p>
-WhatsApp: 11 5820 3956
-</p>
-
-<p>
-Instagram: @Aderet.Blanqueria
-</p>
-
-</section>
-
-</div>
-
-<script>
+`).join("");
 
 function mostrarPagina(id){
 
@@ -728,9 +671,7 @@ document.querySelector(".sidebar")
 function toggleProductos(){
 
 const submenu =
-document.getElementById(
-"submenuProductos"
-);
+document.getElementById("submenuProductos");
 
 if(submenu.style.display==="block"){
 
@@ -746,8 +687,7 @@ submenu.style.display="block";
 
 function cambiarImagen(id,imagen){
 
-document.getElementById(id).src =
-imagen;
+document.getElementById(id).src = imagen;
 
 }
 
