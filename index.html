@@ -466,7 +466,7 @@ body{
 /* ========================= */
 /* CONFIGURACIÓN DE DATOS */
 /* ========================= */
-const categorias = ["sabanas", "mantas", "peluches", "acolchados", "cobertores", "toallas"];
+const categories = ["sabanas", "mantas", "peluches", "acolchados", "cobertores", "toallas"];
 
 const nombresSabanas = {
     1:"Juego de Sábanas",
@@ -507,7 +507,7 @@ function cantidadProductos(categoria){
 /* ========================= */
 let htmlGenerado = "";
 
-categorias.forEach(categoria => {
+categories.forEach(categoria => {
     // Estructurar Grillas principales
     htmlGenerado += `
     <section class="pagina" id="${categoria}">
@@ -531,6 +531,9 @@ categorias.forEach(categoria => {
     for(let i=0; i<cantidadProductos(categoria); i++){
         const nombreProductoActual = categoria==="sabanas" ? nombresSabanas[i+1] : categoria + " Modelo " + (i+1);
         
+        // Inicializamos un contador interno para mapear de forma secuencial limpia las fotos (_1, _2, _3...)
+        let numeroColor = 0;
+
         htmlGenerado += `
         <section class="pagina" id="${categoria}${i+1}">
             <div style="width:100%; overflow:hidden; margin-bottom:20px;">
@@ -558,11 +561,14 @@ categorias.forEach(categoria => {
                         </div>
                         <div class="subtitulo">Colores</div>
                         <div class="colores">
-                            ${coloresSabanas[i+1].map((color, idx) => {
+                            ${coloresSabanas[i+1].map((color) => {
+                                numeroColor++; // Incrementa de a uno de manera secuencial pura
+                                const rutaFotoColor = `${categoria}_modelo${i+1}_${numeroColor}.png`;
+                                
                                 if(Array.isArray(color)){
-                                    return `<div class="color" onclick="seleccionarColor(this); cambiarImagenColor('${categoria}${i+1}', '${categoria}_modelo${i+1}_${idx+1}.png')" style="background:linear-gradient(90deg, ${color[0]} 50%, ${color[1]} 50%);"></div>`;
+                                    return `<div class="color" onclick="seleccionarColor(this); cambiarImagenColor('${categoria}${i+1}', '${rutaFotoColor}')" style="background:linear-gradient(90deg, ${color[0]} 50%, ${color[1]} 50%);"></div>`;
                                 }else{
-                                    return `<div class="color" onclick="seleccionarColor(this); cambiarImagenColor('${categoria}${i+1}', '${categoria}_modelo${i+1}_${idx+1}.png')" style="background:${color}"></div>`;
+                                    return `<div class="color" onclick="seleccionarColor(this); cambiarImagenColor('${categoria}${i+1}', '${rutaFotoColor}')" style="background:${color}"></div>`;
                                 }
                             }).join("")}
                         </div>
@@ -614,6 +620,7 @@ function toggleProductos(){
     }
 }
 
+// Control menú responsive celular
 function toggleMenu(){
     document.querySelector(".sidebar").classList.toggle("activo");
 }
