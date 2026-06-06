@@ -3,15 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Aderet</title>
 
 <style>
-
 /* ========================= */
-/* RESET */
+/* RESET Y GENERALES */
 /* ========================= */
-
 *{
     margin:0;
     padding:0;
@@ -28,7 +25,6 @@ body{
 /* ========================= */
 /* MENU MOBILE */
 /* ========================= */
-
 .menu-mobile{
     position:fixed;
     top:15px;
@@ -50,7 +46,6 @@ body{
 /* ========================= */
 /* SIDEBAR */
 /* ========================= */
-
 .sidebar{
     width:260px;
     height:100vh;
@@ -103,9 +98,8 @@ body{
 }
 
 /* ========================= */
-/* CONTENIDO */
+/* CONTENIDO Y PAGINAS */
 /* ========================= */
-
 .contenido{
     margin-left:260px;
     width:calc(100% - 260px);
@@ -128,7 +122,6 @@ body{
 /* ========================= */
 /* INICIO */
 /* ========================= */
-
 .logo{
     width:260px;
     height:260px;
@@ -141,6 +134,13 @@ body{
     box-shadow:0px 5px 20px rgba(0,0,0,0.08);
     font-size:25px;
     color:#999;
+    overflow:hidden;
+}
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 #inicio h2{
@@ -156,18 +156,13 @@ body{
 }
 
 /* ========================= */
-/* TITULOS */
+/* TITULOS Y GRILLA */
 /* ========================= */
-
 .titulo{
     font-size:50px;
     color:#8a5d6b;
     margin-bottom:40px;
 }
-
-/* ========================= */
-/* GRID */
-/* ========================= */
 
 .grid{
     display:grid;
@@ -205,9 +200,8 @@ body{
 }
 
 /* ========================= */
-/* PRODUCTO */
+/* DETALLE DE PRODUCTO */
 /* ========================= */
-
 .producto-container{
     display:flex;
     gap:50px;
@@ -230,11 +224,7 @@ body{
     height:100%;
     object-fit:cover;
 }
-.imagen-principal img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
+
 .producto-info{
     width:50%;
 }
@@ -243,12 +233,14 @@ body{
     font-size:45px;
     color:#8a5d6b;
     margin-bottom:20px;
+    text-align: left;
 }
 
 .descripcion{
     line-height:32px;
     font-size:18px;
     margin-bottom:25px;
+    text-align: left;
 }
 
 .subtitulo{
@@ -256,12 +248,12 @@ body{
     color:#8a5d6b;
     margin-top:30px;
     margin-bottom:15px;
+    text-align: left;
 }
 
 /* ========================= */
-/* TALLES */
+/* TALLES Y COLORES */
 /* ========================= */
-
 .talles{
     display:flex;
     flex-wrap:wrap;
@@ -287,10 +279,6 @@ body{
     background:#8a5d6b;
     color:white;
 }
-
-/* ========================= */
-/* COLORES */
-/* ========================= */
 
 .colores{
     display:flex;
@@ -319,7 +307,6 @@ body{
 /* ========================= */
 /* BOTONES */
 /* ========================= */
-
 .btn{
     display:inline-block;
     margin-top:35px;
@@ -346,17 +333,12 @@ body{
     cursor:pointer;
     font-weight:bold;
     transition:0.3s;
-}
-
-.btn-volver:hover{
-    background:#8a5d6b;
-    color:white;
+    float: left;
 }
 
 /* ========================= */
 /* CONTACTO */
 /* ========================= */
-
 .contacto-container{
     width:100%;
     display:flex;
@@ -392,797 +374,278 @@ body{
 /* ========================= */
 /* RESPONSIVE */
 /* ========================= */
-
 @media(max-width:900px){
-
     .menu-mobile{
         display:flex;
     }
-
     .sidebar{
         left:-260px;
     }
-
     .sidebar.activo{
         left:0;
     }
-
     .contenido{
         margin-left:0;
         width:100%;
     }
-
     .pagina{
         padding:90px 15px 30px;
     }
-
     .grid{
         grid-template-columns:repeat(2,1fr);
         gap:12px;
     }
-
     .producto-container{
         flex-direction:column;
+        gap:30px;
     }
-
     .galeria,
     .producto-info{
         width:100%;
     }
-
     .imagen-principal{
         height:420px;
     }
-
     #inicio h2{
         font-size:42px;
     }
-
     .titulo{
         font-size:38px;
     }
-
 }
-
 </style>
 </head>
-
 <body>
 
-<!-- MENU MOBILE -->
-
-<div class="menu-mobile" onclick="toggleMenu()">
-☰
-</div>
-
-<!-- SIDEBAR -->
+<div class="menu-mobile" onclick="toggleMenu()">☰</div>
 
 <div class="sidebar">
-
-<div class="logo-menu">
-Aderet
+    <div class="logo-menu">Aderet</div>
+    <div class="menu-item" onclick="mostrarPagina('inicio')">Inicio</div>
+    <div class="menu-item" onclick="toggleProductos()">Productos</div>
+    <div class="submenu" id="submenuProductos">
+        <div onclick="mostrarPagina('sabanas')">Sábanas</div>
+        <div onclick="mostrarPagina('mantas')">Mantas</div>
+        <div onclick="mostrarPagina('peluches')">Peluches con manta</div>
+        <div onclick="mostrarPagina('acolchados')">Acolchados</div>
+        <div onclick="mostrarPagina('cobertores')">Cobertores</div>
+        <div onclick="mostrarPagina('toallas')">Toallas</div>
+    </div>
+    <div class="menu-item" onclick="mostrarPagina('contacto')">Contacto</div>
 </div>
 
-<div class="menu-item" onclick="mostrarPagina('inicio')">
-Inicio
-</div>
+<div class="contenido" id="contenedorPrincipal">
 
-<div class="menu-item" onclick="toggleProductos()">
-Productos
-</div>
+    <section class="pagina activa" id="inicio">
+        <div class="logo">
+            <img src="logo.png" alt="Logo Aderet">
+        </div>
+        <h2>Elegancia y confort</h2>
+        <p>Blanquería online moderna y minimalista. Diseños delicados y calidad premium.</p>
+    </section>
 
-<div class="submenu" id="submenuProductos">
-
-<div onclick="mostrarPagina('sabanas')">
-Sábanas
-</div>
-
-<div onclick="mostrarPagina('mantas')">
-Mantas
-</div>
-
-<div onclick="mostrarPagina('peluches')">
-Peluches con manta
-</div>
-
-<div onclick="mostrarPagina('acolchados')">
-Acolchados
-</div>
-
-<div onclick="mostrarPagina('cobertores')">
-Cobertores
-</div>
-
-<div onclick="mostrarPagina('toallas')">
-Toallas
-</div>
-
-</div>
-
-<div class="menu-item" onclick="mostrarPagina('contacto')">
-Contacto
-</div>
-
-</div>
-
-<!-- CONTENIDO -->
-
-<div class="contenido">
-
-<!-- INICIO -->
-
-<section class="pagina activa" id="inicio">
-
-<div class="logo">
-LOGO
-</div>
-
-<h2>
-Elegancia y confort
-</h2>
-
-<p>
-Blanquería online moderna y minimalista.
-Diseños delicados y calidad premium.
-</p>
-
-</section>
-
-<!-- CONTACTO -->
-
-<section class="pagina" id="contacto">
-
-<div class="contacto-container">
-
-<div class="contacto-box">
-
-<h2>
-Contacto
-</h2>
-
-<div class="contacto-item">
-📱 WhatsApp<br>
-
-<a href="https://wa.me/5491158203956" target="_blank">
-11 5820-3956
-</a>
-
-</div>
-
-<div class="contacto-item">
-📸 Instagram<br>
-
-<a href="https://instagram.com/aderet" target="_blank">
-@Aderet
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
+    <section class="pagina" id="contacto">
+        <div class="contacto-container">
+            <div class="contacto-box">
+                <h2>Contacto</h2>
+                <div class="contacto-item">
+                    📱 WhatsApp<br>
+                    <a href="https://wa.me/5491158203956" target="_blank">11 5820-3956</a>
+                </div>
+                <div class="contacto-item">
+                    📸 Instagram<br>
+                    <a href="https://instagram.com/aderet" target="_blank">@Aderet</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </div>
 
 <script>
-
 /* ========================= */
-/* CONFIG */
+/* CONFIGURACIÓN DE DATOS */
 /* ========================= */
-
-const categorias = [
-"sabanas",
-"mantas",
-"peluches",
-"acolchados",
-"cobertores",
-"toallas"
-];
+const categorias = ["sabanas", "mantas", "peluches", "acolchados", "cobertores", "toallas"];
 
 const nombresSabanas = {
-1:"Juego de Sábanas",
-2:"Sábana Torero",
-3:"Sábana 2 en 1 Torero & Casa Premium",
-4:"Sábana Diseño Americano",
-5:"Sábana Fusion"
+    1:"Juego de Sábanas",
+    2:"Sábana Torero",
+    3:"Sábana 2 en 1 Torero & Casa Premium",
+    4:"Sábana Diseño Americano",
+    5:"Sábana Fusion"
 };
 
 const tallesSabanas = {
-
-1:[
-{nombre:"1½",precio:"25.000"}
-],
-
-2:[
-{nombre:"Twin",precio:"32.000"},
-{nombre:"Queen",precio:"34.000"},
-{nombre:"King",precio:"36.000"}
-],
-
-3:[
-{nombre:"Twin",precio:"28.000"},
-{nombre:"Full",precio:"30.000"},
-{nombre:"Queen",precio:"32.000"}
-],
-
-4:[
-{nombre:"Twin",precio:"24.000"},
-{nombre:"Full",precio:"26.000"},
-{nombre:"Queen",precio:"28.000"}
-],
-
-5:[
-{nombre:"Twin",precio:"22.000"},
-{nombre:"Full",precio:"24.000"},
-{nombre:"Queen",precio:"26.000"}
-]
-
+    1:[{nombre:"1½",precio:"25.000"}],
+    2:[{nombre:"Twin",precio:"32.000"},{nombre:"Queen",precio:"34.000"},{nombre:"King",precio:"36.000"}],
+    3:[{nombre:"Twin",precio:"28.000"},{nombre:"Full",precio:"30.000"},{nombre:"Queen",precio:"32.000"}],
+    4:[{nombre:"Twin",precio:"24.000"},{nombre:"Full",precio:"26.000"},{nombre:"Queen",precio:"28.000"}],
+    5:[{nombre:"Twin",precio:"22.000"},{nombre:"Full",precio:"24.000"},{nombre:"Queen",precio:"26.000"}]
 };
 
 const coloresSabanas = {
-
-1:[
-"#4a6fdc",
-"#f5a9c5",
-["#4a6fdc","#f5a9c5"]
-],
-
-2:[
-"#c8a2ff",
-"#f7b6c2",
-"#808080",
-"#ffd1dc",
-"#001f5c",
-"#002b7f",
-"#ff1493",
-"#f5e6cc",
-"#0d1b4d",
-"#000000",
-"#d3d3d3",
-"#c08081",
-"#7b1e3a",
-"#ffb6c1",
-"#8b7d7b",
-"#dcdcdc",
-"#005eff",
-"#e8d9b5",
-"#3a3a3a",
-"#d40000",
-"#ff8c69",
-
-["#c8a2ff","#f7b6c2"],
-["#808080","#ffd1dc"],
-["#001f5c","#002b7f"],
-["#ff1493","#f5e6cc"],
-["#0d1b4d","#000000"],
-["#d3d3d3","#c08081"],
-["#7b1e3a","#ffb6c1"],
-["#8b7d7b","#dcdcdc"],
-["#005eff","#e8d9b5"],
-["#3a3a3a","#d40000"]
-
-],
-
-3:[
-"#005eff",
-["#005eff","#005eff"]
-],
-
-4:[
-"#fff8e7",
-"#d9d9d9",
-"#e9c7b9",
-"#cc0000",
-"#6b1f2b",
-
-["#fff8e7","#d9d9d9"],
-["#e9c7b9","#cc0000"],
-["#6b1f2b","#6b1f2b"]
-
-],
-
-5:[
-
-"#808080",
-"#ffb6c1",
-"#001f5c",
-"#005eff",
-"#2e8b57",
-"#4f7942",
-"#d4af37",
-"#ffffff",
-"#8b5a2b",
-"#ff1493",
-"#ffc0cb",
-"#00ffff",
-"#f5deb3",
-"#3a3a3a",
-"#4b2e2e",
-"#d8bfd8",
-"#9370db",
-"#228b22",
-"#000000",
-"#d7263d",
-"#87ceeb",
-"#7a5c58",
-"#556b2f",
-"#6b8e23",
-"#1b2a49",
-"#d3d3d3",
-
-["#808080","#ffb6c1"],
-["#001f5c","#005eff"],
-["#2e8b57","#4f7942"],
-["#808080","#d4af37"],
-["#ffffff","#8b5a2b"],
-["#ffffff","#808080"],
-["#005eff","#808080"],
-["#ff1493","#ffc0cb"],
-["#00ffff","#808080"],
-["#8b5a2b","#f5deb3"],
-["#3a3a3a","#808080"],
-["#ffc0cb","#ffffff"],
-["#4b2e2e","#ffffff"],
-["#d8bfd8","#9370db"],
-["#005eff","#8b5a2b"],
-["#228b22","#ffffff"],
-["#ffb6c1","#ff1493"],
-["#000000","#808080"],
-["#8b5a2b","#f5deb3"],
-["#8b5a2b","#f0e6c8"],
-["#005eff","#f5deb3"],
-["#d7263d","#ffffff"],
-["#005eff","#87ceeb"],
-["#7a5c58","#808080"],
-["#001f5c","#ffffff"],
-["#556b2f","#6b8e23"],
-["#1b2a49","#d3d3d3"]
-
-]
-
+    1:["#4a6fdc","#f5a9c5",["#4a6fdc","#f5a9c5"]],
+    2:["#c8a2ff","#f7b6c2","#808080","#ffd1dc","#001f5c","#002b7f","#ff1493","#f5e6cc","#0d1b4d","#000000","#d3d3d3","#c08081","#7b1e3a","#ffb6c1","#8b7d7b","#dcdcdc","#005eff","#e8d9b5","#3a3a3a","#d40000","#ff8c69",["#c8a2ff","#f7b6c2"],["#808080","#ffd1dc"],["#001f5c","#002b7f"],["#ff1493","#f5e6cc"],["#0d1b4d","#000000"],["#d3d3d3","#c08081"],["#7b1e3a","#ffb6c1"],["#8b7d7b","#dcdcdc"],["#005eff","#e8d9b5"],["#3a3a3a","#d40000"]],
+    3:["#005eff",["#005eff","#005eff"]],
+    4:["#fff8e7","#d9d9d9","#e9c7b9","#cc0000","#6b1f2b",["#fff8e7","#d9d9d9"],["#e9c7b9","#cc0000"],["#6b1f2b","#6b1f2b"]],
+    5:["#808080","#ffb6c1","#001f5c","#005eff","#2e8b57","#4f7942","#d4af37","#ffffff","#8b5a2b","#ff1493","#ffc0cb","#00ffff","#f5deb3","#3a3a3a","#4b2e2e","#d8bfd8","#9370db","#228b22","#000000","#d7263d","#87ceeb","#7a5c58","#556b2f","#6b8e23","#1b2a49","#d3d3d3",["#808080","#ffb6c1"],["#001f5c","#005eff"],["#2e8b57","#4f7942"],["#808080","#d4af37"],["#ffffff","#8b5a2b"],["#ffffff","#808080"],["#005eff","#808080"],["#ff1493","#ffc0cb"],["#00ffff","#808080"],["#8b5a2b","#f5deb3"],["#3a3a3a","#808080"],["#ffc0cb","#ffffff"],["#4b2e2e","#ffffff"],["#d8bfd8","#9370db"],["#005eff","#8b5a2b"],["#228b22","#ffffff"],["#ffb6c1","#ff1493"],["#000000","#808080"],["#8b5a2b","#f5deb3"],["#8b5a2b","#f0e6c8"],["#005eff","#f5deb3"],["#d7263d","#ffffff"],["#005eff","#87ceeb"],["#7a5c58","#808080"],["#001f5c","#ffffff"],["#556b2f","#6b8e23"],["#1b2a49","#d3d3d3"]]
 };
 
-/* ========================= */
-/* CANTIDAD */
-/* ========================= */
-
 function cantidadProductos(categoria){
-
-if(categoria==="sabanas") return 5;
-if(categoria==="mantas") return 4;
-if(categoria==="peluches") return 31;
-if(categoria==="acolchados") return 0;
-if(categoria==="cobertores") return 2;
-if(categoria==="toallas") return 2;
-
-return 0;
-
+    if(categoria==="sabanas") return 5;
+    if(categoria==="mantas") return 4;
+    if(categoria==="peluches") return 31;
+    if(categoria==="acolchados") return 0;
+    if(categoria==="cobertores") return 2;
+    if(categoria==="toallas") return 2;
+    return 0;
 }
 
 /* ========================= */
-/* GENERAR PAGINAS */
+/* GENERAR SECCIONES */
 /* ========================= */
-
-document.querySelector(".contenido").innerHTML += categorias.map(categoria => `
-
-<section class="pagina" id="${categoria}">
-
-<h2 class="titulo">
-${categoria==="peluches"
-? "Peluches con manta"
-: categoria.charAt(0).toUpperCase() + categoria.slice(1)}
-</h2>
-
-<div class="grid">
-
-${Array.from({length:cantidadProductos(categoria)}, (_,i)=>`
-
-<div class="producto"
-onclick="mostrarPagina('${categoria}${i+1}')">
-
-<img src="https://via.placeholder.com/400x500/e7d9d2">
-
-<div class="info">
-
-<h3>
-${categoria==="sabanas"
-? nombresSabanas[i+1]
-: categoria + " Modelo " + (i+1)}
-</h3>
-
-</div>
-
-</div>
-
-`).join("")}
-
-</div>
-
-</section>
-
-${Array.from({length:cantidadProductos(categoria)}, (_,i)=>`
-
-<section class="pagina" id="${categoria}${i+1}">
-
-<div class="btn-volver"
-onclick="mostrarPagina('${categoria}')">
-← Volver
-</div>
-
-<div class="producto-container">
-
-<div class="galeria">
-
-<div class="imagen-principal">
-
-<button class="flecha flecha-izq"
-onclick="cambiarImagen(this,-1)">
-❮
-</button>
-
-<img class="img-principal"
-src="sabana_modelo1_color1_1.jpg">
-
-<button class="flecha flecha-der"
-onclick="cambiarImagen(this,1)">
-❯
-</button>
-
-</div>
-
-<div class="miniaturas">
-
-<img class="mini activa"
-src="sabana_modelo1_color1_1.jpg"
-onclick="seleccionarMiniatura(this)">
-
-<img class="mini"
-src="sabana_modelo1_color1_2.jpg"
-onclick="seleccionarMiniatura(this)">
-
-</div>
-
-</div>
-
-<div class="producto-info">
-
-<h1>
-${categoria==="sabanas"
-? nombresSabanas[i+1]
-: categoria + " Modelo " + (i+1)}
-</h1>
-
-<div class="descripcion">
-Producto premium de Aderet.
-Diseño elegante, moderno y minimalista.
-Ideal para darle confort y estilo a tu hogar.
-</div>
-
-${categoria==="sabanas" ? `
-
-<div class="subtitulo">
-Talles
-</div>
-
-<div class="talles">
-
-${tallesSabanas[i+1].map(talle => `
-
-<div class="talle"
-onclick="
-seleccionarTalle(this);
-
-const boton =
-this.closest('.producto-info')
-.querySelector('.btn');
-
-boton.href =
-'https://wa.me/5491158203956?text=' +
-encodeURIComponent(
-'Hola, queria consultar sobre la ${nombresSabanas[i+1]} talle ${talle.nombre} de $${talle.precio}'
-);
-">
-
-${talle.nombre} · $${talle.precio}
-
-</div>
-
-`).join("")}
-
-</div>
-
-<div class="subtitulo">
-Colores
-</div>
-
-<div class="colores">
-
-<div class="subtitulo">
-Método de pago
-</div>
-
-<div class="descripcion">
-Transferencia bancaria
-</div>
-${coloresSabanas[i+1].map(color => {
-
-if(Array.isArray(color)){
-
-return `
-
-<div class="color"
-onclick="seleccionarColor(this)"
-style="
-background:linear-gradient(
-90deg,
-${color[0]} 50%,
-${color[1]} 50%
-);
-">
-</div>
-
-`;
-
-}else{
-
-return `
-
-<div class="color"
-onclick="seleccionarColor(this)"
-style="background:${color}">
-</div>
-
-`;
-
-}
-
-}).join("")}
-
-</div>
-
-` : ""}
-
-<a class="btn"
-href="https://wa.me/5491158203956?text=${encodeURIComponent(
-`Hola, queria consultar sobre la ${
-categoria==="sabanas"
-? nombresSabanas[i+1]
-: categoria + " Modelo " + (i+1)
-}`
-)}"
-target="_blank">
-
-Consultar
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-`).join("")}
-
-`).join("");
-
-/* ========================= */
-/* FUNCIONES */
-/* ========================= */
-
-function mostrarPagina(id){
-
-const paginas =
-document.querySelectorAll(".pagina");
-
-paginas.forEach(function(pagina){
-
-pagina.style.display="none";
-
+let htmlGenerado = "";
+
+categorias.forEach(categoria => {
+    // Estructurar Grillas principales
+    htmlGenerado += `
+    <section class="pagina" id="${categoria}">
+        <h2 class="titulo">
+            ${categoria==="peluches" ? "Peluches con manta" : categoria.charAt(0).toUpperCase() + categoria.slice(1)}
+        </h2>
+        <div class="grid">
+            ${Array.from({length:cantidadProductos(categoria)}, (_,i)=>`
+                <div class="producto" onclick="mostrarPagina('${categoria}${i+1}')">
+                    <img src="${categoria}_modelo${i+1}.png">
+                    <div class="info">
+                        <h3>${categoria==="sabanas" ? nombresSabanas[i+1] : categoria + " Modelo " + (i+1)}</h3>
+                    </div>
+                </div>
+            `).join("")}
+        </div>
+    </section>
+    `;
+
+    // Estructurar Detalle interno de cada producto
+    for(let i=0; i<cantidadProductos(categoria); i++){
+        const nombreProductoActual = categoria==="sabanas" ? nombresSabanas[i+1] : categoria + " Modelo " + (i+1);
+        
+        htmlGenerado += `
+        <section class="pagina" id="${categoria}${i+1}">
+            <div style="width:100%; overflow:hidden; margin-bottom:20px;">
+                <div class="btn-volver" onclick="mostrarPagina('${categoria}')">← Volver</div>
+            </div>
+            <div class="producto-container">
+                <div class="galeria">
+                    <div class="imagen-principal">
+                        <img id="img-principal-${categoria}${i+1}" src="${categoria}_modelo${i+1}.png">
+                    </div>
+                </div>
+                <div class="producto-info">
+                    <h1>${nombreProductoActual}</h1>
+                    <div class="descripcion">
+                        Producto premium de Aderet. Diseño elegante, moderno y minimalista. Ideal para darle confort y estilo a tu hogar.
+                    </div>
+                    ${categoria==="sabanas" ? `
+                        <div class="subtitulo">Talles</div>
+                        <div class="talles">
+                            ${tallesSabanas[i+1].map(talle => `
+                                <div class="talle" onclick="seleccionarTalle(this, '${nombresSabanas[i+1]}', '${talle.nombre}', '${talle.precio}')">
+                                    ${talle.nombre} · $${talle.precio}
+                                </div>
+                            `).join("")}
+                        </div>
+                        <div class="subtitulo">Colores</div>
+                        <div class="colores">
+                            ${coloresSabanas[i+1].map((color, idx) => {
+                                if(Array.isArray(color)){
+                                    return `<div class="color" onclick="seleccionarColor(this); cambiarImagenColor('${categoria}${i+1}', '${categoria}_modelo${i+1}_${idx+1}.png')" style="background:linear-gradient(90deg, ${color[0]} 50%, ${color[1]} 50%);"></div>`;
+                                }else{
+                                    return `<div class="color" onclick="seleccionarColor(this); cambiarImagenColor('${categoria}${i+1}', '${categoria}_modelo${i+1}_${idx+1}.png')" style="background:${color}"></div>`;
+                                }
+                            }).join("")}
+                        </div>
+                    ` : ""}
+                    <a class="btn btn-consultar-wa" href="https://wa.me/5491158203956?text=${encodeURIComponent('Hola, quería consultar sobre: ' + nombreProductoActual)}" target="_blank">
+                        Consultar
+                    </a>
+                </div>
+            </div>
+        </section>
+        `;
+    }
 });
 
-const paginaActiva =
-document.getElementById(id);
+// Inyección limpia sin romper nodos previos del DOM
+document.getElementById("contenedorPrincipal").insertAdjacentHTML('beforeend', htmlGenerado);
 
-if(id==="inicio"){
+/* ========================= */
+/* LOGICA DE INTERACCIÓN */
+/* ========================= */
+function mostrarPagina(id){
+    const paginas = document.querySelectorAll(".pagina");
+    paginas.forEach(function(pagina){
+        pagina.style.display = "none";
+        pagina.classList.remove("activa");
+    });
 
-paginaActiva.style.display="flex";
-
-}else{
-
-paginaActiva.style.display="block";
-
-}
-
-if(window.innerWidth <= 900){
-
-document.querySelector(".sidebar")
-.classList.remove("activo");
-
-}
-
+    const paginaActiva = document.getElementById(id);
+    if(paginaActiva){
+        if(id === "inicio"){
+            paginaActiva.style.display = "flex";
+            paginaActiva.classList.add("activa");
+        } else {
+            paginaActiva.style.display = "block";
+        }
+    }
+    
+    if(window.innerWidth <= 900){
+        document.querySelector(".sidebar").classList.remove("activo");
+    }
 }
 
 function toggleProductos(){
-
-const submenu =
-document.getElementById("submenuProductos");
-
-if(submenu.style.display==="block"){
-
-submenu.style.display="none";
-
-}else{
-
-submenu.style.display="block";
-
-}
-
+    const submenu = document.getElementById("submenuProductos");
+    if(submenu.style.display === "block"){
+        submenu.style.display = "none";
+    } else {
+        submenu.style.display = "block";
+    }
 }
 
 function toggleMenu(){
-
-document.querySelector(".sidebar")
-.classList.toggle("activo");
-
+    document.querySelector(".sidebar").classList.toggle("activo");
 }
 
 function seleccionarColor(elemento){
-
-const contenedor =
-elemento.parentElement;
-
-contenedor.querySelectorAll(".color")
-.forEach(color => {
-
-color.classList.remove("activo");
-
-});
-
-elemento.classList.add("activo");
-
-const producto =
-elemento.closest(".producto-container");
-
-const principal =
-producto.querySelector(".img-principal");
-
-const minis =
-producto.querySelectorAll(".mini");
-
-const indiceColor =
-Array.from(contenedor.children)
-.indexOf(elemento) + 1;
-
-const titulo =
-producto.querySelector("h1")
-.innerText;
-
-let modelo = "modelo";
-
-if(titulo.includes("Juego")){
-modelo = "sabana_modelo1";
+    const contenedor = elemento.parentElement;
+    contenedor.querySelectorAll(".color").forEach(color => {
+        color.classList.remove("activo");
+    });
+    elemento.classList.add("activo");
 }
 
-else if(titulo.includes("Torero")){
-modelo = "sabana_modelo2";
+function seleccionarTalle(elemento, nombreProducto, talleNombre, tallePrecio){
+    const contenedor = elemento.parentElement;
+    contenedor.querySelectorAll(".talle").forEach(talle => {
+        talle.classList.remove("activo");
+    });
+    elemento.classList.add("activo");
+
+    const botonWa = elemento.closest('.producto-info').querySelector('.btn-consultar-wa');
+    if(botonWa){
+        botonWa.href = 'https://wa.me/5491158203956?text=' + encodeURIComponent('Hola, quería consultar sobre la ' + nombreProducto + ' talle ' + talleNombre + ' de $' + tallePrecio);
+    }
 }
 
-else if(titulo.includes("2 en 1")){
-modelo = "sabana_modelo3";
+function cambiarImagenColor(idPagina, nuevaRuta) {
+    const img = document.getElementById("img-principal-" + idPagina);
+    if(img) {
+        img.src = nuevaRuta;
+    }
 }
-
-else if(titulo.includes("Americano")){
-modelo = "sabana_modelo4";
-}
-
-else if(titulo.includes("Fusion")){
-modelo = "sabana_modelo5";
-}
-
-const img1 =
-`${modelo}_color${indiceColor}_1.jpg`;
-
-const img2 =
-`${modelo}_color${indiceColor}_2.jpg`;
-
-principal.src = img1;
-
-minis[0].src = img1;
-minis[1].src = img2;
-
-minis.forEach(img=>{
-
-img.classList.remove("activa");
-
-});
-
-minis[0].classList.add("activa");
-
-}
-
-function seleccionarTalle(elemento){
-
-const contenedor =
-elemento.parentElement;
-
-contenedor.querySelectorAll(".talle")
-.forEach(talle => {
-
-talle.classList.remove("activo");
-
-});
-
-elemento.classList.add("activo");
-
-}
-
 </script>
 
 </body>
-</html
-
-    function seleccionarMiniatura(elemento){
-
-const contenedor =
-elemento.parentElement;
-
-contenedor.querySelectorAll(".mini")
-.forEach(img=>{
-
-img.classList.remove("activa");
-
-});
-
-elemento.classList.add("activa");
-
-const galeria =
-contenedor.parentElement;
-
-galeria.querySelector(".img-principal")
-.src = elemento.src;
-
-}
-
-function cambiarImagen(boton,direccion){
-
-const galeria =
-boton.closest(".galeria");
-
-const minis =
-galeria.querySelectorAll(".mini");
-
-let indice = 0;
-
-minis.forEach((img,i)=>{
-
-if(img.classList.contains("activa")){
-indice = i;
-}
-
-});
-
-indice += direccion;
-
-if(indice < 0){
-indice = minis.length - 1;
-}
-
-if(indice >= minis.length){
-indice = 0;
-}
-
-minis.forEach(img=>{
-
-img.classList.remove("activa");
-
-});
-
-minis[indice].classList.add("activa");
-
-galeria.querySelector(".img-principal")
-.src = minis[indice].src;
-
-}
+</html>
