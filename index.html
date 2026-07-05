@@ -7,7 +7,7 @@
 
 <style>
 /* ========================= */
-/* RESET Y GENERALES */
+/* RESET */
 /* ========================= */
 *{
     margin:0;
@@ -98,7 +98,7 @@ body{
 }
 
 /* ========================= */
-/* CONTENIDO Y PAGINAS */
+/* CONTENIDO */
 /* ========================= */
 .contenido{
     margin-left:260px;
@@ -156,7 +156,7 @@ body{
 }
 
 /* ========================= */
-/* TITULOS Y GRILLA */
+/* TITULOS */
 /* ========================= */
 .titulo{
     font-size:50px;
@@ -164,6 +164,9 @@ body{
     margin-bottom:40px;
 }
 
+/* ========================= */
+/* GRID */
+/* ========================= */
 .grid{
     display:grid;
     grid-template-columns:repeat(5,1fr);
@@ -200,7 +203,7 @@ body{
 }
 
 /* ========================= */
-/* DETALLE DE PRODUCTO */
+/* PRODUCTO */
 /* ========================= */
 .producto-container{
     display:flex;
@@ -252,7 +255,7 @@ body{
 }
 
 /* ========================= */
-/* TALLES Y COLORES */
+/* TALLES */
 /* ========================= */
 .talles{
     display:flex;
@@ -280,6 +283,9 @@ body{
     color:white;
 }
 
+/* ========================= */
+/* COLORES */
+/* ========================= */
 .colores{
     display:flex;
     flex-wrap:wrap;
@@ -464,9 +470,9 @@ body{
 
 <script>
 /* ========================= */
-/* CONFIGURACIÓN DE DATOS */
+/* CONFIG */
 /* ========================= */
-const categories = ["sabanas", "mantas", "peluches", "acolchados", "cobertores", "toallas"];
+const categorias = ["sabanas", "mantas", "peluches", "acolchados", "cobertores", "toallas"];
 
 const nombresSabanas = {
     1:"Juego de Sábanas",
@@ -485,11 +491,25 @@ const tallesSabanas = {
 };
 
 const coloresSabanas = {
-    1:["#4a6fdc","#f5a9c5",["#4a6fdc","#f5a9c5"]],
-    2:["#c8a2ff","#f7b6c2","#808080","#ffd1dc","#001f5c","#002b7f","#ff1493","#f5e6cc","#0d1b4d","#000000","#d3d3d3","#c08081","#7b1e3a","#ffb6c1","#8b7d7b","#dcdcdc","#005eff","#e8d9b5","#3a3a3a","#d40000","#ff8c69",["#c8a2ff","#f7b6c2"],["#808080","#ffd1dc"],["#001f5c","#002b7f"],["#ff1493","#f5e6cc"],["#0d1b4d","#000000"],["#d3d3d3","#c08081"],["#7b1e3a","#ffb6c1"],["#8b7d7b","#dcdcdc"],["#005eff","#e8d9b5"],["#3a3a3a","#d40000"]],
-    3:["#005eff",["#005eff","#005eff"]],
-    4:["#fff8e7","#d9d9d9","#e9c7b9","#cc0000","#6b1f2b",["#fff8e7","#d9d9d9"],["#e9c7b9","#cc0000"],["#6b1f2b","#6b1f2b"]],
-    5:["#808080","#ffb6c1","#001f5c","#005eff","#2e8b57","#4f7942","#d4af37","#ffffff","#8b5a2b","#ff1493","#ffc0cb","#00ffff","#f5deb3","#3a3a3a","#4b2e2e","#d8bfd8","#9370db","#228b22","#000000","#d7263d","#87ceeb","#7a5c58","#556b2f","#6b8e23","#1b2a49","#d3d3d3",["#808080","#ffb6c1"],["#001f5c","#005eff"],["#2e8b57","#4f7942"],["#808080","#d4af37"],["#ffffff","#8b5a2b"],["#ffffff","#808080"],["#005eff","#808080"],["#ff1493","#ffc0cb"],["#00ffff","#808080"],["#8b5a2b","#f5deb3"],["#3a3a3a","#808080"],["#ffc0cb","#ffffff"],["#4b2e2e","#ffffff"],["#d8bfd8","#9370db"],["#005eff","#8b5a2b"],["#228b22","#ffffff"],["#ffb6c1","#ff1493"],["#000000","#808080"],["#8b5a2b","#f5deb3"],["#8b5a2b","#f0e6c8"],["#005eff","#f5deb3"],["#d7263d","#ffffff"],["#005eff","#87ceeb"],["#7a5c58","#808080"],["#001f5c","#ffffff"],["#556b2f","#6b8e23"],["#1b2a49","#d3d3d3"]]
+    1: [
+        "#4a6fdc",
+        "#f5a9c5"
+    ],
+    2: [
+        "#c8a2ff", "#f7b6c2", "#808080", "#ffd1dc", "#001f5c", "#002b7f", "#ff1493", "#f5e6cc", "#0d1b4d", "#000000", "#d3d3d3", "#c08081", "#7b1e3a", "#ffb6c1", "#8b7d7b", "#dcdcdc", "#005eff", "#e8d9b5", "#3a3a3a", "#d40000", "#ff8c69", 
+        ["#c8a2ff", "#f7b6c2"], ["#808080", "#ffd1dc"], ["#001f5c", "#002b7f"], ["#ff1493", "#f5e6cc"], ["#0d1b4d", "#000000"], ["#d3d3d3", "#c08081"], ["#7b1e3a", "#ffb6c1"], ["#8b7d7b", "#dcdcdc"], ["#005eff", "#e8d9b5"], ["#3a3a3a", "#d40000"]
+    ],
+    3: [
+        "#005eff"
+    ],
+    4: [
+        "#fff8e7", "#d9d9d9", "#e9c7b9", "#cc0000", 
+        ["#fff8e7", "#d9d9d9"], ["#e9c7b9", "#cc0000"]
+    ],
+    5: [
+        "#808080", "#ffb6c1", "#001f5c", "#005eff", "#2e8b57", "#4f7942", "#d4af37", "#ffffff", "#8b5a2b", "#ff1493", "#ffc0cb", "#00ffff", "#f5deb3", "#3a3a3a", "#4b2e2e", "#d8bfd8", "#9370db", "#228b22", "#000000", "#d7263d", "#87ceeb", "#7a5c58", "#556b2f", "#6b8e23", "#1b2a49", "#d3d3d3", 
+        ["#808080", "#ffb6c1"], ["#001f5c", "#005eff"], ["#2e8b57", "#4f7942"], ["#808080", "#d4af37"], ["#ffffff", "#8b5a2b"], ["#ffffff", "#808080"], ["#005eff", "#808080"], ["#ff1493", "#ffc0cb"], ["#00ffff", "#808080"], ["#8b5a2b", "#f5deb3"], ["#3a3a3a", "#808080"], ["#ffc0cb", "#ffffff"], ["#4b2e2e", "#ffffff"], ["#d8bfd8", "#9370db"], ["#005eff", "#8b5a2b"], ["#228b22", "#ffffff"], ["#ffb6c1", "#ff1493"], ["#000000", "#808080"], ["#8b5a2b", "#f5deb3"], ["#8b5a2b", "#f5deb3"], ["#005eff", "#f5deb3"], ["#d7263d", "#ffffff"], ["#005eff", "#87ceeb"], ["#7a5c58", "#808080"], ["#001f5c", "#ffffff"], ["#556b2f", "#6b8e23"], ["#1b2a49", "#d3d3d3"]
+    ]
 };
 
 function cantidadProductos(categoria){
@@ -503,12 +523,12 @@ function cantidadProductos(categoria){
 }
 
 /* ========================= */
-/* GENERAR SECCIONES */
+/* GENERAR PAGINAS DINÁMICAS */
 /* ========================= */
 let htmlGenerado = "";
 
-categories.forEach(categoria => {
-    // Estructurar Grillas principales
+categorias.forEach(categoria => {
+    // Generar Grilla de Categoría
     htmlGenerado += `
     <section class="pagina" id="${categoria}">
         <h2 class="titulo">
@@ -527,13 +547,10 @@ categories.forEach(categoria => {
     </section>
     `;
 
-    // Estructurar Detalle interno de cada producto
+    // Generar Vista de Detalle de cada Producto
     for(let i=0; i<cantidadProductos(categoria); i++){
         const nombreProductoActual = categoria==="sabanas" ? nombresSabanas[i+1] : categoria + " Modelo " + (i+1);
         
-        // Inicializamos un contador interno para mapear de forma secuencial limpia las fotos (_1, _2, _3...)
-        let numeroColor = 0;
-
         htmlGenerado += `
         <section class="pagina" id="${categoria}${i+1}">
             <div style="width:100%; overflow:hidden; margin-bottom:20px;">
@@ -561,14 +578,11 @@ categories.forEach(categoria => {
                         </div>
                         <div class="subtitulo">Colores</div>
                         <div class="colores">
-                            ${coloresSabanas[i+1].map((color) => {
-                                numeroColor++; // Incrementa de a uno de manera secuencial pura
-                                const rutaFotoColor = `${categoria}_modelo${i+1}_${numeroColor}.png`;
-                                
+                            ${coloresSabanas[i+1].map((color, idx) => {
                                 if(Array.isArray(color)){
-                                    return `<div class="color" onclick="seleccionarColor(this); cambiarImagenColor('${categoria}${i+1}', '${rutaFotoColor}')" style="background:linear-gradient(90deg, ${color[0]} 50%, ${color[1]} 50%);"></div>`;
+                                    return `<div class="color" onclick="seleccionarColor(this); cambiarImagenColor('${categoria}${i+1}', '${categoria}_modelo${i+1}_${idx+1}.png')" style="background:linear-gradient(90deg, ${color[0]} 50%, ${color[1]} 50%);"></div>`;
                                 }else{
-                                    return `<div class="color" onclick="seleccionarColor(this); cambiarImagenColor('${categoria}${i+1}', '${rutaFotoColor}')" style="background:${color}"></div>`;
+                                    return `<div class="color" onclick="seleccionarColor(this); cambiarImagenColor('${categoria}${i+1}', '${categoria}_modelo${i+1}_${idx+1}.png')" style="background:${color}"></div>`;
                                 }
                             }).join("")}
                         </div>
@@ -583,11 +597,11 @@ categories.forEach(categoria => {
     }
 });
 
-// Inyección limpia sin romper nodos previos del DOM
+// Insertar de forma segura en el DOM sin pisar los elementos estáticos (evita romper clicks del menú)
 document.getElementById("contenedorPrincipal").insertAdjacentHTML('beforeend', htmlGenerado);
 
 /* ========================= */
-/* LOGICA DE INTERACCIÓN */
+/* FUNCIONES DE NAVEGACIÓN Y CONTROL */
 /* ========================= */
 function mostrarPagina(id){
     const paginas = document.querySelectorAll(".pagina");
@@ -606,6 +620,7 @@ function mostrarPagina(id){
         }
     }
     
+    // Auto-cerrar sidebar en celular tras elegir sección
     if(window.innerWidth <= 900){
         document.querySelector(".sidebar").classList.remove("activo");
     }
@@ -620,7 +635,6 @@ function toggleProductos(){
     }
 }
 
-// Control menú responsive celular
 function toggleMenu(){
     document.querySelector(".sidebar").classList.toggle("activo");
 }
@@ -640,6 +654,7 @@ function seleccionarTalle(elemento, nombreProducto, talleNombre, tallePrecio){
     });
     elemento.classList.add("activo");
 
+    // Enlazar de forma dinámica el talle seleccionado al botón de WhatsApp
     const botonWa = elemento.closest('.producto-info').querySelector('.btn-consultar-wa');
     if(botonWa){
         botonWa.href = 'https://wa.me/5491158203956?text=' + encodeURIComponent('Hola, quería consultar sobre la ' + nombreProducto + ' talle ' + talleNombre + ' de $' + tallePrecio);
