@@ -203,7 +203,7 @@ body{
 }
 
 /* ========================= */
-/* PRODUCTO */
+/* PRODUCTO EXPOSITOR */
 /* ========================= */
 .producto-container{
     display:flex;
@@ -216,16 +216,52 @@ body{
 
 .imagen-principal{
     width:100%;
-    height:650px;
+    height:550px;
     background:white;
     border-radius:25px;
     overflow:hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .imagen-principal img{
     width:100%;
     height:100%;
     object-fit:cover;
+}
+
+/* MINIATURAS NUEVAS */
+.miniaturas-container{
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    justify-content: left;
+}
+
+.miniatura{
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    border: 2px solid #ead5cf;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.miniatura:hover{
+    border-color: #8a5d6b;
+    transform: scale(1.05);
+}
+
+.miniatura.activa{
+    border-color: #8a5d6b;
+    box-shadow: 0 0 8px rgba(138, 93, 107, 0.4);
+}
+
+.miniatura img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .producto-info{
@@ -580,10 +616,11 @@ categories.forEach(categoria => {
         let htmlColores = "";
         if(categoria==="sabanas" && coloresSabanas[i+1]){
             coloresSabanas[i+1].forEach((color, idx) => {
+                const numColor = idx + 1;
                 if(Array.isArray(color)){
-                    htmlColores += `<div class="color" onclick="seleccionarColor(this); cambiarImagenColor('${categoria}${i+1}', '${categoria}_modelo${i+1}_${idx+1}.png')" style="background:linear-gradient(90deg, ${color[0]} 50%, ${color[1]} 50%);"></div>`;
+                    htmlColores += `<div class="color" onclick="seleccionarColor(this, '${categoria}${i+1}', ${numColor});" style="background:linear-gradient(90deg, ${color[0]} 50%, ${color[1]} 50%);"></div>`;
                 }else{
-                    htmlColores += `<div class="color" onclick="seleccionarColor(this); cambiarImagenColor('${categoria}${i+1}', '${categoria}_modelo${i+1}_${idx+1}.png')" style="background:${color}"></div>`;
+                    htmlColores += `<div class="color" onclick="seleccionarColor(this, '${categoria}${i+1}', ${numColor});" style="background:${color}"></div>`;
                 }
             });
         }
@@ -597,6 +634,10 @@ categories.forEach(categoria => {
                 <div class="galeria">
                     <div class="imagen-principal">
                         <img id="img-principal-${categoria}${i+1}" src="${categoria}_modelo${i+1}.png">
+                    </div>
+                    <!-- CONTENEDOR NUEVO DE MINIATURAS INTERNAS DEBAJO DE LA FOTO GRANDE -->
+                    <div class="miniaturas-container" id="miniaturas-${categoria}${i+1}">
+                        <!-- Se llenan automáticamente cuando se elige un color -->
                     </div>
                 </div>
                 <div class="producto-info">
@@ -628,7 +669,6 @@ categories.forEach(categoria => {
     }
 });
 
-// Insertar en el DOM
 document.getElementById("contenedorPrincipal").insertAdjacentHTML('beforeend', htmlGenerado);
 
 /* ========================= */
@@ -673,12 +713,40 @@ function toggleMenu(){
     document.querySelector(".sidebar").classList.toggle("activo");
 }
 
-function seleccionarColor(elemento){
+// MODIFICADA: Ahora maneja las miniaturas dinámicas por color guion número de imagen (1 y 2)
+function seleccionarColor(elemento, idProducto, numColor){
     const contenedor = elemento.parentElement;
     contenedor.querySelectorAll(".color").forEach(color => {
         color.classList.remove("activo");
     });
     elemento.classList.add("activo");
+
+    // Armar rutas basadas en la estructura exacta requerida: producto_modeloX_color-imagen.png
+    const rutaImagen1 = `${idProducto}_${numColor}-1.png`;
+    const rutaImagen2 = `${idProducto}_${numColor}-2.png`;
+
+    // Cambiar de inmediato la vista principal a la primera foto del color
+    cambiarImagenColor(idProducto, rutaImagen1);
+
+    // Renderizar los dos cuadraditos de miniaturas abajo
+    const contenedorMiniaturas = document.getElementById(`miniaturas-${idProducto}`);
+    if (contenedorMiniaturas) {
+        contenedorMiniaturas.innerHTML = `
+            <div class="miniatura activa" onclick="clickMiniatura(this, '${idProducto}', '${rutaImagen1}')">
+                <img src="${rutaImagen1}">
+            </div>
+            <div class="miniatura" onclick="clickMiniatura(this, '${idProducto}', '${rutaImagen2}')">
+                <img src="${rutaImagen2}">
+            </div>
+        `;
+    }
+}
+
+function clickMiniatura(elemento, idProducto, rutaImagen) {
+    const contenedor = elemento.parentElement;
+    contenedor.querySelectorAll(".miniatura").forEach(m => m.classList.remove("activa"));
+    elemento.classList.add("activa");
+    cambiarImagenColor(idProducto, rutaImagen);
 }
 
 function seleccionarTalle(elemento, nombreProducto, talleNombre, tallePrecio){
