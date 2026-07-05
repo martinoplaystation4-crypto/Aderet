@@ -472,7 +472,7 @@ body{
 /* ========================= */
 /* CONFIG */
 /* ========================= */
-const categorias = ["sabanas", "mantas", "peluches", "acolchados", "cobertores", "toallas"];
+const categories = ["sabanas", "mantas", "peluches", "acolchados", "cobertores", "toallas"];
 
 const nombresSabanas = {
     1:"Juego de Sábanas",
@@ -490,7 +490,6 @@ const tallesSabanas = {
     5:[{nombre:"Twin",precio:"22.000"},{nombre:"Full",precio:"24.000"},{nombre:"Queen",precio:"26.000"}]
 };
 
-// LISTAS TOTALMENTE DEPURADAS DE FORMA MANUAL AQUÍ ABAJO:
 const coloresSabanas = {
     1: [
         "#4a6fdc",
@@ -503,10 +502,39 @@ const coloresSabanas = {
         "#005eff"
     ],
     4: [
-        "#fff8e7", "#d9d9d9", "#e9c7b9", "#cc0000"
+        "#fff8e7", "#d9d9d9", "#e9c7b9", "#cc0000", "#9b4444"
     ],
     5: [
-        "#808080", "#ffb6c1", "#001f5c", "#005eff", "#2e8b57", "#4f7942", "#d4af37", "#ffffff", "#ff1493", "#ffc0cb", "#00ffff", "#f5deb3", "#3a3a3a", "#d8bfd8", "#9370db", "#228b22", "#000000", "#d7263d", "#87ceeb", "#d3d3d3"
+        ["#808080", "#ffb6c1"], // 1. Gris con rosa
+        "#001f5c",               // 2. Azul marino
+        "#005eff",               // 3. Azul fuerte
+        "#2e8b57",               // 4. Verde planta marina alga
+        ["#808080", "#d4af37"], // 5. Gris con dorado
+        ["#ffffff", "#8b5a2b"], // 6. Blanco con marrón
+        ["#ffffff", "#808080"], // 7. Blanco con gris
+        ["#005eff", "#808080"], // 8. Azul con gris
+        ["#ff1493", "#ffc0cb"], // 9. Rosa fuerte con rosa claro
+        ["#00ffff", "#808080"], // 10. Cyan con gris
+        ["#8b5a2b", "#f5deb3"], // 11. Marrón con beige
+        ["#808080", "#000000"], // 12. Gris con negro
+        ["#ffb6c1", "#ffffff"], // 13. Rosa con blanco
+        ["#4a2c11", "#ffffff"], // 14. Marrón oscuro con blanco
+        ["#00ffff", "#808080"], // 15. Cyan con gris
+        ["#ffc0cb", "#7b1e3a"], // 16. Rosa claro con violeta
+        ["#005eff", "#8b5a2b"], // 17. Azul con marrón
+        ["#228b22", "#ffffff"], // 18. Verde con blanco
+        ["#005eff", "#808080"], // 19. Azul con gris
+        ["#ffb6c1", "#ff1493"], // 20. Rosa suave con rosa fuerte
+        ["#000000", "#808080"], // 21. Negro con gris
+        ["#8b5a2b", "#f5deb3"], // 22. Marrón con beige
+        ["#8b5a2b", "#fff8e7"], // 23. Marrón con amarillo claro como hueso
+        ["#005eff", "#f5deb3"], // 24. Azul con beige
+        ["#ff69b4", "#ffffff"], // 25. Rojo flor rosa con blanco
+        ["#005eff", "#87ceeb"], // 26. Azul con celeste
+        ["#6e5d55", "#808080"], // 27. Marrón apagado con gris
+        ["#001f5c", "#ffffff"], // 28. Azul marino con blanco
+        ["#228b22", "#556b2f"], // 29. Verde con verde seco
+        ["#0b1d3a", "#d3d3d3"]  // 30. Azul profundo con gris claro
     ]
 };
 
@@ -525,7 +553,7 @@ function cantidadProductos(categoria){
 /* ========================= */
 let htmlGenerado = "";
 
-categorias.forEach(categoria => {
+categories.forEach(categoria => {
     // Generar Grilla de Categoría
     htmlGenerado += `
     <section class="pagina" id="${categoria}">
@@ -637,7 +665,6 @@ function toggleProductos(){
     }
 }
 
-// Corregir bug visual de inicialización de páginas ocultas al cargar
 document.addEventListener("DOMContentLoaded", () => {
     mostrarPagina('inicio');
 });
