@@ -5,455 +5,124 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aderet</title>
 
+<!-- Etiquetas para WhatsApp -->
+<meta property="og:title" content="Aderet | Blanquería Premium">
+<meta property="og:description" content="Diseños delicados y calidad premium para tu hogar.">
+<meta property="og:image" content="logo.png">
+<meta property="og:type" content="website">
+
 <style>
-/* ========================= */
-/* RESET */
-/* ========================= */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:Arial,sans-serif; background:#f7f1ed; color:#5e4b52; overflow-x:hidden; }
 
-body{
-    font-family:Arial,sans-serif;
-    background:#f7f1ed;
-    color:#5e4b52;
-    overflow-x:hidden;
-}
-
-/* ========================= */
-/* MENU MOBILE */
-/* ========================= */
 .menu-mobile{
-    position:fixed;
-    top:15px;
-    left:15px;
-    width:55px;
-    height:55px;
-    background:#8a5d6b;
-    color:white;
-    border-radius:15px;
-    display:none;
-    justify-content:center;
-    align-items:center;
-    font-size:30px;
-    cursor:pointer;
-    z-index:9999;
-    box-shadow:0 5px 20px rgba(0,0,0,0.15);
+    position:fixed; top:15px; left:15px; width:55px; height:55px; background:#8a5d6b; color:white;
+    border-radius:15px; display:none; justify-content:center; align-items:center; font-size:30px;
+    cursor:pointer; z-index:9999; box-shadow:0 5px 20px rgba(0,0,0,0.15);
 }
 
-/* ========================= */
-/* SIDEBAR */
-/* ========================= */
 .sidebar{
-    width:260px;
-    height:100vh;
-    background:#ead5cf;
-    position:fixed;
-    left:0;
-    top:0;
-    padding:110px 25px 40px;
-    overflow-y:auto;
-    box-shadow:5px 0px 20px rgba(0,0,0,0.05);
-    transition:0.4s;
-    z-index:999;
+    width:260px; height:100vh; background:#ead5cf; position:fixed; left:0; top:0;
+    padding:110px 25px 40px; overflow-y:auto; box-shadow:5px 0px 20px rgba(0,0,0,0.05);
+    transition:0.4s; z-index:999;
 }
 
-.logo-menu{
-    font-size:42px;
-    font-weight:bold;
-    color:#8a5d6b;
-    margin-bottom:50px;
-}
+.logo-menu{ font-size:42px; font-weight:bold; color:#8a5d6b; margin-bottom:50px; }
+.menu-item{ font-size:20px; margin-bottom:22px; cursor:pointer; font-weight:bold; transition:0.3s; }
+.menu-item:hover{ color:#8a5d6b; transform:translateX(5px); }
+.submenu{ margin-left:15px; margin-top:10px; display:none; }
+.submenu div{ margin-bottom:12px; cursor:pointer; transition:0.3s; }
+.submenu div:hover{ color:#8a5d6b; transform:translateX(5px); }
 
-.menu-item{
-    font-size:20px;
-    margin-bottom:22px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:0.3s;
-}
+.contenido{ margin-left:260px; width:calc(100% - 260px); }
+.pagina{ min-height:100vh; padding:60px; display:none; }
+.activa{ display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; }
 
-.menu-item:hover{
-    color:#8a5d6b;
-    transform:translateX(5px);
-}
-
-.submenu{
-    margin-left:15px;
-    margin-top:10px;
-    display:none;
-}
-
-.submenu div{
-    margin-bottom:12px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.submenu div:hover{
-    color:#8a5d6b;
-    transform:translateX(5px);
-}
-
-/* ========================= */
-/* CONTENIDO */
-/* ========================= */
-.contenido{
-    margin-left:260px;
-    width:calc(100% - 260px);
-}
-
-.pagina{
-    min-height:100vh;
-    padding:60px;
-    display:none;
-}
-
-.activa{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
-}
-
-/* ========================= */
-/* INICIO */
-/* ========================= */
 .logo{
-    width:260px;
-    height:260px;
-    border-radius:30px;
-    background:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:40px;
-    box-shadow:0px 5px 20px rgba(0,0,0,0.08);
-    font-size:25px;
-    color:#999;
-    overflow:hidden;
+    width:260px; height:260px; border-radius:30px; background:white; display:flex;
+    justify-content:center; align-items:center; margin-bottom:40px; box-shadow:0px 5px 20px rgba(0,0,0,0.08);
+    font-size:25px; color:#999; overflow:hidden;
 }
+.logo img{ width:100%; height:100%; object-fit:cover; }
 
-.logo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
+#inicio h2{ font-size:65px; color:#8a5d6b; margin-bottom:20px; }
+#inicio p{ font-size:22px; max-width:700px; line-height:35px; }
 
-#inicio h2{
-    font-size:65px;
-    color:#8a5d6b;
-    margin-bottom:20px;
-}
-
-#inicio p{
-    font-size:22px;
-    max-width:700px;
-    line-height:35px;
-}
-
-/* ========================= */
-/* TITULOS */
-/* ========================= */
-.titulo{
-    font-size:50px;
-    color:#8a5d6b;
-    margin-bottom:40px;
-}
-
-/* ========================= */
-/* GRID */
-/* ========================= */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:22px;
-}
+.titulo{ font-size:50px; color:#8a5d6b; margin-bottom:40px; }
+.grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:22px; }
 
 .producto{
-    background:white;
-    border-radius:22px;
-    overflow:hidden;
-    cursor:pointer;
-    transition:0.3s;
-    box-shadow:0px 5px 15px rgba(0,0,0,0.08);
+    background:white; border-radius:22px; overflow:hidden; cursor:pointer;
+    transition:0.3s; box-shadow:0px 5px 15px rgba(0,0,0,0.08);
 }
+.producto:hover{ transform:translateY(-8px) scale(1.02); }
+.producto img{ width:100%; height:240px; object-fit:cover; display:block; background:#eee; }
 
-.producto:hover{
-    transform:translateY(-8px) scale(1.02);
-}
+.info{ padding:18px; }
+.info h3{ color:#8a5d6b; font-size:18px; }
 
-.producto img{
-    width:100%;
-    height:240px;
-    object-fit:cover;
-    display:block;
-}
-
-.info{
-    padding:18px;
-}
-
-.info h3{
-    color:#8a5d6b;
-    font-size:18px;
-}
-
-/* ========================= */
-/* PRODUCTO EXPOSITOR */
-/* ========================= */
-.producto-container{
-    display:flex;
-    gap:50px;
-}
-
-.galeria{
-    width:50%;
-}
-
+.producto-container{ display:flex; gap:50px; }
+.galeria{ width:50%; }
 .imagen-principal{
-    width:100%;
-    height:550px;
-    background:white;
-    border-radius:25px;
-    overflow:hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width:100%; height:550px; background:white; border-radius:25px;
+    overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.05);
 }
+.imagen-principal img{ width:100%; height:100%; object-fit:cover; background:#eee; }
 
-.imagen-principal img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-/* MINIATURAS NUEVAS */
-.miniaturas-container{
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
-    justify-content: left;
-}
-
+.miniaturas-container{ display:flex; gap:15px; margin-top:15px; justify-content:left; }
 .miniatura{
-    width: 80px;
-    height: 80px;
-    border-radius: 12px;
-    overflow: hidden;
-    background: white;
-    border: 2px solid #ead5cf;
-    cursor: pointer;
-    transition: 0.2s;
+    width:80px; height:80px; border-radius:12px; overflow:hidden; background:white;
+    border:2px solid #ead5cf; cursor:pointer; transition:0.2s;
 }
+.miniatura:hover{ border-color:#8a5d6b; transform:scale(1.05); }
+.miniatura.activa{ border-color:#8a5d6b; box-shadow:0 0 8px rgba(138, 93, 107, 0.4); }
+.miniatura img{ width:100%; height:100%; object-fit:cover; }
 
-.miniatura:hover{
-    border-color: #8a5d6b;
-    transform: scale(1.05);
-}
+.producto-info{ width:50%; }
+.producto-info h1{ font-size:45px; color:#8a5d6b; margin-bottom:20px; text-align:left; }
+.descripcion{ line-height:32px; font-size:18px; margin-bottom:25px; text-align:left; }
+.subtitulo{ font-size:24px; color:#8a5d6b; margin-top:30px; margin-bottom:15px; text-align:left; }
 
-.miniatura.activa{
-    border-color: #8a5d6b;
-    box-shadow: 0 0 8px rgba(138, 93, 107, 0.4);
-}
-
-.miniatura img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.producto-info{
-    width:50%;
-}
-
-.producto-info h1{
-    font-size:45px;
-    color:#8a5d6b;
-    margin-bottom:20px;
-    text-align: left;
-}
-
-.descripcion{
-    line-height:32px;
-    font-size:18px;
-    margin-bottom:25px;
-    text-align: left;
-}
-
-.subtitulo{
-    font-size:24px;
-    color:#8a5d6b;
-    margin-top:30px;
-    margin-bottom:15px;
-    text-align: left;
-}
-
-/* ========================= */
-/* TALLES */
-/* ========================= */
-.talles{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-}
-
+.talles{ display:flex; flex-wrap:wrap; gap:12px; }
 .talle{
-    padding:12px 18px;
-    background:white;
-    border:2px solid #d6b9c3;
-    border-radius:14px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:0.3s;
+    padding:12px 18px; background:white; border:2px solid #d6b9c3;
+    border-radius:14px; cursor:pointer; font-weight:bold; transition:0.3s;
 }
+.talle:hover, .talle.activo{ background:#8a5d6b; color:white; }
 
-.talle:hover{
-    background:#8a5d6b;
-    color:white;
-}
+.colores{ display:flex; flex-wrap:wrap; gap:12px; }
+.color{ width:42px; height:42px; border-radius:50%; border:2px solid #ddd; cursor:pointer; transition:0.3s; }
+.color:hover{ transform:scale(1.12); }
+.color.activo{ border:4px solid #8a5d6b; transform:scale(1.15); }
 
-.talle.activo{
-    background:#8a5d6b;
-    color:white;
-}
-
-/* ========================= */
-/* COLORES */
-/* ========================= */
-.colores{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-}
-
-.color{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    border:2px solid #ddd;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.color:hover{
-    transform:scale(1.12);
-}
-
-.color.activo{
-    border:4px solid #8a5d6b;
-    transform:scale(1.15);
-}
-
-/* ========================= */
-/* BOTONES */
-/* ========================= */
 .btn{
-    display:inline-block;
-    margin-top:35px;
-    background:#8a5d6b;
-    color:white;
-    padding:18px 40px;
-    border-radius:15px;
-    text-decoration:none;
-    font-weight:bold;
-    transition:0.3s;
+    display:inline-block; margin-top:35px; background:#8a5d6b; color:white;
+    padding:18px 40px; border-radius:15px; text-decoration:none; font-weight:bold; transition:0.3s;
 }
-
-.btn:hover{
-    transform:scale(1.05);
-}
-
+.btn:hover{ transform:scale(1.05); }
 .btn-volver{
-    display:inline-block;
-    margin-bottom:25px;
-    background:#ead5cf;
-    color:#8a5d6b;
-    padding:12px 22px;
-    border-radius:14px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:0.3s;
-    float: left;
+    display:inline-block; margin-bottom:25px; background:#ead5cf; color:#8a5d6b;
+    padding:12px 22px; border-radius:14px; cursor:pointer; font-weight:bold; transition:0.3s; float:left;
 }
 
-/* ========================= */
-/* CONTACTO */
-/* ========================= */
-.contacto-container{
-    width:100%;
-    display:flex;
-    justify-content:center;
-}
+.contacto-container{ width:100%; display:flex; justify-content:center; }
+.contacto-box{ width:100%; max-width:650px; background:white; border-radius:35px; padding:40px; box-shadow:0 10px 30px rgba(0,0,0,0.08); }
+.contacto-box h2{ font-size:52px; color:#9b6b7d; margin-bottom:35px; }
+.contacto-item{ font-size:28px; margin-bottom:28px; }
+.contacto-item a{ color:#9b6b7d; text-decoration:none; font-weight:bold; }
 
-.contacto-box{
-    width:100%;
-    max-width:650px;
-    background:white;
-    border-radius:35px;
-    padding:40px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
-}
-
-.contacto-box h2{
-    font-size:52px;
-    color:#9b6b7d;
-    margin-bottom:35px;
-}
-
-.contacto-item{
-    font-size:28px;
-    margin-bottom:28px;
-}
-
-.contacto-item a{
-    color:#9b6b7d;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-/* ========================= */
-/* RESPONSIVE */
-/* ========================= */
 @media(max-width:900px){
-    .menu-mobile{
-        display:flex;
-    }
-    .sidebar{
-        left:-260px;
-    }
-    .sidebar.activo{
-        left:0;
-    }
-    .contenido{
-        margin-left:0;
-        width:100%;
-    }
-    .pagina{
-        padding:90px 15px 30px;
-    }
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-    }
-    .producto-container{
-        flex-direction:column;
-        gap:30px;
-    }
-    .galeria,
-    .producto-info{
-        width:100%;
-    }
-    .imagen-principal{
-        height:420px;
-    }
-    #inicio h2{
-        font-size:42px;
-    }
-    .titulo{
-        font-size:38px;
-    }
+    .menu-mobile{ display:flex; }
+    .sidebar{ left:-260px; }
+    .sidebar.activo{ left:0; }
+    .contenido{ margin-left:0; width:100%; }
+    .pagina{ padding:90px 15px 30px; }
+    .grid{ grid-template-columns:repeat(2,1fr); gap:12px; }
+    .producto-container{ flex-direction:column; gap:30px; }
+    .galeria, .producto-info{ width:100%; }
+    .imagen-principal{ height:420px; }
+    #inicio h2{ font-size:42px; }
+    .titulo{ font-size:38px; }
 }
 </style>
 </head>
@@ -505,19 +174,10 @@ body{
 </div>
 
 <script>
-/* ========================= */
-/* CONFIG */
-/* ========================= */
 const categories = ["sabanas", "mantas", "peluches", "acolchados", "cobertores", "toallas"];
 
-const nombresSabanas = {
-    1:"Juego de Sábanas",
-    2:"Sábana Torero",
-    3:"Sábana 2 en 1 Torero & Casa Premium",
-    4:"Sábana Diseño Americano",
-    5:"Sábana Fusion"
-};
-
+// --- SÁBANAS ---
+const nombresSabanas = { 1:"Juego de Sábanas", 2:"Sábana Torero", 3:"Sábana 2 en 1 Torero & Casa Premium", 4:"Sábana Diseño Americano", 5:"Sábana Fusion" };
 const tallesSabanas = {
     1:[{nombre:"1½",precio:"25.000"}],
     2:[{nombre:"Twin",precio:"32.000"},{nombre:"Queen",precio:"34.000"},{nombre:"King",precio:"36.000"}],
@@ -525,141 +185,194 @@ const tallesSabanas = {
     4:[{nombre:"Twin",precio:"24.000"},{nombre:"Full",precio:"26.000"},{nombre:"Queen",precio:"28.000"}],
     5:[{nombre:"Twin",precio:"22.000"},{nombre:"Full",precio:"24.000"},{nombre:"Queen",precio:"26.000"}]
 };
-
 const coloresSabanas = {
-    1: [
-        "#4a6fdc",
-        "#f5a9c5"
-    ],
-    2: [
-        "#c8a2ff", "#f7b6c2", "#808080", "#ffd1dc", "#001f5c", "#002b7f", "#ff1493", "#f5e6cc", "#0d1b4d", "#000000", "#d3d3d3", "#c08081", "#7b1e3a", "#ffb6c1", "#8b7d7b", "#dcdcdc", "#005eff", "#e8d9b5", "#3a3a3a", "#d40000", "#ff8c69"
-    ],
-    3: [
-        "#005eff"
-    ],
-    4: [
-        "#fff8e7", "#d9d9d9", "#e9c7b9", "#cc0000", "#9b4444"
-    ],
+    1: ["#4a6fdc", "#f5a9c5"],
+    2: ["#c8a2ff", "#f7b6c2", "#808080", "#ffd1dc", "#001f5c", "#002b7f", "#ff1493", "#f5e6cc", "#0d1b4d", "#000000", "#d3d3d3", "#c08081", "#7b1e3a", "#ffb6c1", "#8b7d7b", "#dcdcdc", "#005eff", "#e8d9b5", "#3a3a3a", "#d40000", "#ff8c69"],
+    3: ["#005eff"],
+    4: ["#fff8e7", "#d9d9d9", "#e9c7b9", "#cc0000", "#9b4444"],
     5: [
-        ["#808080", "#ffb6c1"], // 1. Gris con rosa
-        "#001f5c",               // 2. Azul marino
-        "#005eff",               // 3. Azul fuerte
-        "#2e8b57",               // 4. Verde planta marina alga
-        ["#808080", "#d4af37"], // 5. Gris con dorado
-        ["#ffffff", "#8b5a2b"], // 6. Blanco con marrón
-        ["#ffffff", "#808080"], // 7. Blanco con gris
-        ["#005eff", "#808080"], // 8. Azul con gris
-        ["#ff1493", "#ffc0cb"], // 9. Rosa fuerte con rosa claro
-        ["#00ffff", "#808080"], // 10. Cyan con gris
-        ["#8b5a2b", "#f5deb3"], // 11. Marrón con beige
-        ["#808080", "#000000"], // 12. Gris con negro
-        ["#ffb6c1", "#ffffff"], // 13. Rosa con blanco
-        ["#4a2c11", "#ffffff"], // 14. Marrón oscuro con blanco
-        ["#00ffff", "#808080"], // 15. Cyan con gris
-        ["#ffc0cb", "#7b1e3a"], // 16. Rosa claro con violeta
-        ["#005eff", "#8b5a2b"], // 17. Azul con marrón
-        ["#228b22", "#ffffff"], // 18. Verde con blanco
-        ["#005eff", "#808080"], // 19. Azul con gris
-        ["#ffb6c1", "#ff1493"], // 20. Rosa suave con rosa fuerte
-        ["#000000", "#808080"], // 21. Negro con gris
-        ["#8b5a2b", "#f5deb3"], // 22. Marrón con beige
-        ["#8b5a2b", "#fff8e7"], // 23. Marrón con amarillo claro como hueso
-        ["#005eff", "#f5deb3"], // 24. Azul con beige
-        ["#ff69b4", "#ffffff"], // 25. Rojo flor rosa con blanco
-        ["#005eff", "#87ceeb"], // 26. Azul con celeste
-        ["#6e5d55", "#808080"], // 27. Marrón apagado con gris
-        ["#001f5c", "#ffffff"], // 28. Azul marino con blanco
-        ["#228b22", "#556b2f"], // 29. Verde con verde seco
-        ["#0b1d3a", "#d3d3d3"]  // 30. Azul profundo con gris claro
+        ["#808080", "#ffb6c1"], "#001f5c", "#005eff", "#2e8b57",
+        ["#808080", "#d4af37"], ["#ffffff", "#8b5a2b"], ["#ffffff", "#808080"],
+        ["#005eff", "#808080"], ["#ff1493", "#ffc0cb"], ["#00ffff", "#808080"],
+        ["#8b5a2b", "#f5deb3"], ["#808080", "#000000"], ["#ffb6c1", "#ffffff"],
+        ["#4a2c11", "#ffffff"], ["#00ffff", "#808080"], ["#ffc0cb", "#7b1e3a"],
+        ["#005eff", "#8b5a2b"], ["#228b22", "#ffffff"], ["#005eff", "#808080"],
+        ["#ffb6c1", "#ff1493"], ["#000000", "#808080"], ["#8b5a2b", "#f5deb3"],
+        ["#8b5a2b", "#fff8e7"], ["#005eff", "#f5deb3"], ["#ff69b4", "#ffffff"],
+        ["#005eff", "#87ceeb"], ["#6e5d55", "#808080"], ["#001f5c", "#ffffff"],
+        ["#228b22", "#556b2f"], ["#0b1d3a", "#d3d3d3"]
     ]
 };
+
+// --- MANTAS ---
+const nombresMantas = { 1: "Manta Cherry Con Corderito", 2: "Manta Plush", 3: "Manta Piel De Cisne", 4: "Manta Piel de Ganzo Con Cordero" };
+const tallesMantas = { 1: [{ nombre: "2 1/2", precio: "25.000" }], 2: [{ nombre: "Queen", precio: "32.000" }], 3: [{ nombre: "2 1/2", precio: "35.000" }], 4: [{ nombre: "2 1/2", precio: "30.000" }] };
+const coloresMantas = {
+    1: ["#8a5d6b", "#ead5cf"],
+    2: ["#e88989", "#ffffff", "#9c7c5f", "#29488c"],
+    3: [
+        ["#525354", "#ffffff"],
+        ["#005eff", "#87ceeb"], ["#005eff", "#87ceeb"], ["#005eff", "#87ceeb"],
+        ["#005eff", "#87ceeb"], ["#005eff", "#87ceeb"], ["#005eff", "#87ceeb"],
+        ["#005eff", "#87ceeb"], ["#005eff", "#87ceeb"], ["#005eff", "#87ceeb"],
+        ["#005eff", "#87ceeb"], ["#005eff", "#87ceeb"], ["#005eff", "#87ceeb"],
+        ["#005eff", "#87ceeb"]
+    ],
+    4: ["#8a5d6b", "#ead5cf"]
+};
+
+// --- PELUCHES CON MANTA ---
+const nombresPeluches = {}, tallesPeluches = {}, coloresPeluches = {};
+for(let i=1; i<=31; i++){
+    nombresPeluches[i] = "Peluche con Manta " + i;
+    tallesPeluches[i] = [{ nombre: "Único", precio: "0" }];
+    coloresPeluches[i] = ["#8a5d6b"];
+}
+
+// --- ACOLCHADOS ---
+const nombresAcolchados = { 1: "Acolchado Premium" };
+const tallesAcolchados = { 1: [{ nombre: "1½", precio: "0" }, { nombre: "Twin", precio: "0" }, { nombre: "Queen", precio: "0" }, { nombre: "King", precio: "0" }] };
+const coloresAcolchados = {
+    1: [
+        "#8a5d6b", "#ead5cf", "#2e5db0", "#89458c", "#48a828",
+        "#373837", "#a32424", "#73541f", "#17ad8a", "#bd4646"
+    ]
+};
+
+// --- COBERTORES ---
+const nombresCobertores = { 1: "Cobertor Modelo 1", 2: "Cobertor Modelo 2" };
+const tallesCobertores = { 1: [{ nombre: "Único", precio: "0" }], 2: [{ nombre: "Único", precio: "0" }] };
+const coloresCobertores = { 1: ["#8a5d6b", "#ead5cf"], 2: ["#8a5d6b", "#ead5cf"] };
+
+// --- TOALLAS ---
+const nombresToallas = { 1: "Toallon Lucky", 2: "Toallas X3 Piezas" };
+const tallesToallas = { 1: [{ nombre: "Estandar", precio: "10.000" }], 2: [{ nombre: "Estandar", precio: "25.000" }] };
+const coloresToallas = {
+    1: ["#2e5db0", "#89458c", "#48a828", "#373837", "#a32424"],
+    2: ["#73541f", "#17ad8a", "#bd4646", "#525050", "#2e5db0"]
+};
+
+function obtenerNombreProducto(categoria, id) {
+    if (categoria === "sabanas" && nombresSabanas[id]) return nombresSabanas[id];
+    if (categoria === "mantas" && nombresMantas[id]) return nombresMantas[id];
+    if (categoria === "peluches" && nombresPeluches[id]) return nombresPeluches[id];
+    if (categoria === "acolchados" && nombresAcolchados[id]) return nombresAcolchados[id];
+    if (categoria === "cobertores" && nombresCobertores[id]) return nombresCobertores[id];
+    if (categoria === "toallas" && nombresToallas[id]) return nombresToallas[id];
+    return categoria + " Modelo " + id;
+}
+
+function obtenerTallesProducto(categoria, id) {
+    if (categoria === "sabanas") return tallesSabanas[id];
+    if (categoria === "mantas") return tallesMantas[id];
+    if (categoria === "peluches") return tallesPeluches[id];
+    if (categoria === "acolchados") return tallesAcolchados[id];
+    if (categoria === "cobertores") return tallesCobertores[id];
+    if (categoria === "toallas") return tallesToallas[id];
+    return null;
+}
+
+function obtenerColoresProducto(categoria, id) {
+    if (categoria === "sabanas") return coloresSabanas[id];
+    if (categoria === "mantas") return coloresMantas[id];
+    if (categoria === "peluches") return coloresPeluches[id];
+    if (categoria === "acolchados") return coloresAcolchados[id];
+    if (categoria === "cobertores") return coloresCobertores[id];
+    if (categoria === "toallas") return coloresToallas[id];
+    return null;
+}
 
 function cantidadProductos(categoria){
     if(categoria==="sabanas") return 5;
     if(categoria==="mantas") return 4;
     if(categoria==="peluches") return 31;
-    if(categoria==="acolchados") return 0;
+    if(categoria==="acolchados") return 1;
     if(categoria==="cobertores") return 2;
     if(categoria==="toallas") return 2;
     return 0;
 }
 
-/* ========================= */
-/* GENERAR PAGINAS DINÁMICAS */
-/* ========================= */
+let seleccionActual = {};
 let htmlGenerado = "";
 
 categories.forEach(categoria => {
-    // Generar Grilla de Categoría
     htmlGenerado += `
     <section class="pagina" id="${categoria}">
         <h2 class="titulo">
             ${categoria==="peluches" ? "Peluches con manta" : categoria.charAt(0).toUpperCase() + categoria.slice(1)}
         </h2>
         <div class="grid">
-            ${Array.from({length:cantidadProductos(categoria)}, (_,i)=>`
-                <div class="producto" onclick="mostrarPagina('${categoria}${i+1}')">
-                    <img src="${categoria}_modelo${i+1}.png">
+            ${Array.from({length:cantidadProductos(categoria)}, (_,i)=>{
+                const idProd = i + 1;
+                const nombreItem = obtenerNombreProducto(categoria, idProd);
+                return `
+                <div class="producto" onclick="inicializarProducto('${categoria}', ${idProd})">
+                    <img src="${categoria}${idProd}_1-1.jpeg">
                     <div class="info">
-                        <h3>${categoria==="sabanas" ? nombresSabanas[i+1] : categoria + " Modelo " + (i+1)}</h3>
+                        <h3>${nombreItem}</h3>
                     </div>
                 </div>
-            `).join("")}
+                `;
+            }).join("")}
         </div>
     </section>
     `;
 
-    // Generar Vista de Detalle de cada Producto
     for(let i=0; i<cantidadProductos(categoria); i++){
-        const nombreProductoActual = categoria==="sabanas" ? nombresSabanas[i+1] : categoria + " Modelo " + (i+1);
+        const idProd = i + 1;
+        const nombreProductoActual = obtenerNombreProducto(categoria, idProd);
+        const fotoInicialExpositor = `${categoria}${idProd}_1-1.jpeg`;
+        const listaColores = obtenerColoresProducto(categoria, idProd);
         
         let htmlColores = "";
-        if(categoria==="sabanas" && coloresSabanas[i+1]){
-            coloresSabanas[i+1].forEach((color, idx) => {
+        if(listaColores){
+            listaColores.forEach((color, idx) => {
                 const numColor = idx + 1;
+                const claseActivo = numColor === 1 ? "activo" : "";
                 if(Array.isArray(color)){
-                    htmlColores += `<div class="color" onclick="seleccionarColor(this, '${categoria}${i+1}', ${numColor});" style="background:linear-gradient(90deg, ${color[0]} 50%, ${color[1]} 50%);"></div>`;
+                    htmlColores += `<div class="color ${claseActivo}" onclick="seleccionarColor(this, '${categoria}${idProd}', ${numColor});" style="background:linear-gradient(90deg, ${color[0]} 50%, ${color[1]} 50%);"></div>`;
                 }else{
-                    htmlColores += `<div class="color" onclick="seleccionarColor(this, '${categoria}${i+1}', ${numColor});" style="background:${color}"></div>`;
+                    htmlColores += `<div class="color ${claseActivo}" onclick="seleccionarColor(this, '${categoria}${idProd}', ${numColor});" style="background:${color}"></div>`;
                 }
             });
         }
 
+        const listaTalles = obtenerTallesProducto(categoria, idProd);
+
         htmlGenerado += `
-        <section class="pagina" id="${categoria}${i+1}">
+        <section class="pagina" id="${categoria}${idProd}">
             <div style="width:100%; overflow:hidden; margin-bottom:20px;">
                 <div class="btn-volver" onclick="mostrarPagina('${categoria}')">← Volver</div>
             </div>
             <div class="producto-container">
                 <div class="galeria">
                     <div class="imagen-principal">
-                        <img id="img-principal-${categoria}${i+1}" src="${categoria}_modelo${i+1}.png">
+                        <img id="img-principal-${categoria}${idProd}" src="${fotoInicialExpositor}">
                     </div>
-                    <!-- CONTENEDOR NUEVO DE MINIATURAS INTERNAS DEBAJO DE LA FOTO GRANDE -->
-                    <div class="miniaturas-container" id="miniaturas-${categoria}${i+1}">
-                        <!-- Se llenan automáticamente cuando se elige un color -->
-                    </div>
+                    <div class="miniaturas-container" id="miniaturas-${categoria}${idProd}"></div>
                 </div>
                 <div class="producto-info">
                     <h1>${nombreProductoActual}</h1>
                     <div class="descripcion">
                         Producto premium de Aderet. Diseño elegante, moderno y minimalista. Ideal para darle confort y estilo a tu hogar.
                     </div>
-                    ${categoria==="sabanas" ? `
+                    ${listaTalles ? `
                         <div class="subtitulo">Talles</div>
                         <div class="talles">
-                            ${tallesSabanas[i+1].map(talle => `
-                                <div class="talle" onclick="seleccionarTalle(this, '${nombresSabanas[i+1]}', '${talle.nombre}', '${talle.precio}')">
+                            ${listaTalles.map(talle => `
+                                <div class="talle" onclick="seleccionarTalle(this, '${categoria}${idProd}', '${talle.nombre}', '${talle.precio}')">
                                     ${talle.nombre} · $${talle.precio}
                                 </div>
                             `).join("")}
                         </div>
+                    ` : ""}
+                    ${listaColores ? `
                         <div class="subtitulo">Colores</div>
                         <div class="colores">
                             ${htmlColores}
                         </div>
                     ` : ""}
-                    <a class="btn btn-consultar-wa" href="https://wa.me/5491158203956?text=${encodeURIComponent('Hola, quería consultar sobre: ' + nombreProductoActual)}" target="_blank">
+                    <a id="btn-wa-${categoria}${idProd}" class="btn" href="#" target="_blank">
                         Consultar
                     </a>
                 </div>
@@ -671,101 +384,133 @@ categories.forEach(categoria => {
 
 document.getElementById("contenedorPrincipal").insertAdjacentHTML('beforeend', htmlGenerado);
 
-/* ========================= */
-/* FUNCIONES DE NAVEGACIÓN Y CONTROL */
-/* ========================= */
+function inicializarProducto(categoria, modeloNum) {
+    const idProducto = `${categoria}${modeloNum}`;
+    const nombreProd = obtenerNombreProducto(categoria, modeloNum);
+    
+    seleccionActual[idProducto] = { nombre: nombreProd, talle: "", precio: "" };
+    
+    const imgPrincipal = document.getElementById(`img-principal-${idProducto}`);
+    if(imgPrincipal) {
+        imgPrincipal.src = `${idProducto}_1-1.jpeg`;
+    }
+
+    const seccionProducto = document.getElementById(idProducto);
+    if(seccionProducto) {
+        const circulosColores = seccionProducto.querySelectorAll(".color");
+        circulosColores.forEach((c, idx) => {
+            if(idx === 0) c.classList.add("activo");
+            else c.classList.remove("activo");
+        });
+        const botonesTalles = seccionProducto.querySelectorAll(".talle");
+        botonesTalles.forEach(t => t.classList.remove("activo"));
+    }
+
+    actualizarMiniaturasContenedor(idProducto, 1);
+    mostrarPagina(idProducto);
+    actualizarBotonWhatsApp(idProducto);
+}
+
+function actualizarMiniaturasContenedor(idProducto, numColor) {
+    const contenedorMiniaturas = document.getElementById(`miniaturas-${idProducto}`);
+    if (!contenedorMiniaturas) return;
+
+    const rutaImagen1 = `${idProducto}_${numColor}-1.jpeg`;
+    const rutaImagen2 = `${idProducto}_${numColor}-2.jpeg`;
+
+    contenedorMiniaturas.innerHTML = `
+        <div class="miniatura activa" onclick="clickMiniatura(this, '${idProducto}', '${rutaImagen1}')">
+            <img src="${rutaImagen1}">
+        </div>
+        <div class="miniatura" onclick="clickMiniatura(this, '${idProducto}', '${rutaImagen2}')">
+            <img src="${rutaImagen2}">
+        </div>
+    `;
+}
+
 function mostrarPagina(id){
     const paginas = document.querySelectorAll(".pagina");
-    paginas.forEach(function(pagina){
-        pagina.style.display = "none";
-        pagina.classList.remove("activa");
-    });
+    paginas.forEach(p => { p.style.display = "none"; p.classList.remove("activa"); });
 
     const paginaActiva = document.getElementById(id);
     if(paginaActiva){
-        if(id === "inicio"){
-            paginaActiva.style.display = "flex";
-            paginaActiva.classList.add("activa");
-        } else {
-            paginaActiva.style.display = "block";
-        }
+        if(id === "inicio") { paginaActiva.style.display = "flex"; paginaActiva.classList.add("activa"); }
+        else { paginaActiva.style.display = "block"; }
     }
-    
-    if(window.innerWidth <= 900){
-        document.querySelector(".sidebar").classList.remove("activo");
-    }
+    if(window.innerWidth <= 900) document.querySelector(".sidebar").classList.remove("activo");
 }
 
 function toggleProductos(){
     const submenu = document.getElementById("submenuProductos");
-    if(submenu.style.display === "block"){
-        submenu.style.display = "none";
-    } else {
-        submenu.style.display = "block";
-    }
+    submenu.style.display = submenu.style.display === "block" ? "none" : "block";
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    mostrarPagina('inicio');
-});
+document.addEventListener("DOMContentLoaded", () => mostrarPagina('inicio'));
+function toggleMenu() { document.querySelector(".sidebar").classList.toggle("activo"); }
 
-function toggleMenu(){
-    document.querySelector(".sidebar").classList.toggle("activo");
-}
-
-// MODIFICADA: Ahora maneja las miniaturas dinámicas por color guion número de imagen (1 y 2)
 function seleccionarColor(elemento, idProducto, numColor){
     const contenedor = elemento.parentElement;
-    contenedor.querySelectorAll(".color").forEach(color => {
-        color.classList.remove("activo");
-    });
+    contenedor.querySelectorAll(".color").forEach(c => c.classList.remove("activo"));
     elemento.classList.add("activo");
 
-    // Armar rutas basadas en la estructura exacta requerida: producto_modeloX_color-imagen.png
-    const rutaImagen1 = `${idProducto}_${numColor}-1.png`;
-    const rutaImagen2 = `${idProducto}_${numColor}-2.png`;
-
-    // Cambiar de inmediato la vista principal a la primera foto del color
+    const rutaImagen1 = `${idProducto}_${numColor}-1.jpeg`;
     cambiarImagenColor(idProducto, rutaImagen1);
 
-    // Renderizar los dos cuadraditos de miniaturas abajo
-    const contenedorMiniaturas = document.getElementById(`miniaturas-${idProducto}`);
-    if (contenedorMiniaturas) {
-        contenedorMiniaturas.innerHTML = `
-            <div class="miniatura activa" onclick="clickMiniatura(this, '${idProducto}', '${rutaImagen1}')">
-                <img src="${rutaImagen1}">
-            </div>
-            <div class="miniatura" onclick="clickMiniatura(this, '${idProducto}', '${rutaImagen2}')">
-                <img src="${rutaImagen2}">
-            </div>
-        `;
-    }
+    actualizarMiniaturasContenedor(idProducto, numColor);
+    actualizarBotonWhatsApp(idProducto);
 }
 
 function clickMiniatura(elemento, idProducto, rutaImagen) {
     const contenedor = elemento.parentElement;
     contenedor.querySelectorAll(".miniatura").forEach(m => m.classList.remove("activa"));
     elemento.classList.add("activa");
+    
     cambiarImagenColor(idProducto, rutaImagen);
+    actualizarBotonWhatsApp(idProducto);
 }
 
-function seleccionarTalle(elemento, nombreProducto, talleNombre, tallePrecio){
+function seleccionarTalle(elemento, idProducto, talleNombre, tallePrecio){
     const contenedor = elemento.parentElement;
-    contenedor.querySelectorAll(".talle").forEach(talle => {
-        talle.classList.remove("activo");
-    });
+    contenedor.querySelectorAll(".talle").forEach(t => t.classList.remove("activo"));
     elemento.classList.add("activo");
 
-    const botonWa = elemento.closest('.producto-info').querySelector('.btn-consultar-wa');
-    if(botonWa){
-        botonWa.href = 'https://wa.me/5491158203956?text=' + encodeURIComponent('Hola, quería consultar sobre la ' + nombreProducto + ' talle ' + talleNombre + ' de $' + tallePrecio);
-    }
+    seleccionActual[idProducto].talle = talleNombre;
+    seleccionActual[idProducto].precio = tallePrecio;
+
+    actualizarBotonWhatsApp(idProducto);
 }
 
 function cambiarImagenColor(idPagina, nuevaRuta) {
     const img = document.getElementById("img-principal-" + idPagina);
-    if(img) {
-        img.src = nuevaRuta;
+    if(img) img.src = nuevaRuta;
+}
+
+function actualizarBotonWhatsApp(idProducto) {
+    const datos = seleccionActual[idProducto];
+    if(!datos) return;
+
+    const imgElement = document.getElementById(`img-principal-${idProducto}`);
+    let nombreFotoCompleta = "No especificado";
+    if(imgElement && imgElement.src) {
+        nombreFotoCompleta = imgElement.src.substring(imgElement.src.lastIndexOf('/') + 1);
+    }
+
+    let texto = `¡Hola! Quiero más información sobre el producto:\n\n`;
+    texto += `*Producto:* ${datos.nombre}\n`;
+    
+    if(datos.talle) {
+        texto += `*Talle:* ${datos.talle}\n`;
+        texto += `*Precio:* $${datos.precio}\n`;
+    } else {
+        texto += `*Precio:* Consultar talle\n`;
+    }
+    
+    texto += `*Color seleccionado:* Archivo ${nombreFotoCompleta}\n\n`;
+    texto += `Ver en la tienda: ${window.location.href}`;
+
+    const botonWa = document.getElementById(`btn-wa-${idProducto}`);
+    if(botonWa) {
+        botonWa.href = `https://wa.me/5491158203956?text=${encodeURIComponent(texto)}`;
     }
 }
 </script>
